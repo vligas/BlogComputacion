@@ -14,12 +14,12 @@
 # Ideas base de datos
 Tablas:
 
-Administradores
-Escritores
-Usuarios
-Posts
-Categorias
-Sub-categorias (Revisar esto, ahora que lo pienso no se si sea buena idea)
-Comentarios (añadir reacciones en algun momento)
-Ideas? ...
+1. Administradores
+2. Escritores
+3. Usuarios
+4. Posts
+5. Categorias
+6. Sub-categorias (Revisar esto, ahora que lo pienso no se si sea buena idea)
+7. Comentarios (añadir reacciones en algun momento)
+8. Ideas? ...
 
