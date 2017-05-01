@@ -4,7 +4,8 @@ class Post(models.Model):
     title = models.CharField(max_length = 100)
     text = models.TextField()
     # falta autor
-    date = models.DateField()
+    updated_at = models.DateField(auto_now=True)
+    created_at = models.DateField(auto_now_add=True) # para que se llene automaticamente al instanciar el objeto
     cont_vist = models.IntegerField()
 
 class ImgOfPost(models.Model):
