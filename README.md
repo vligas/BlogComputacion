@@ -18,11 +18,11 @@ Tablas:
 2. Escritores
 3. Usuarios
 4. Posts
-  -texto
-  -fecha y hora
-  -autor
-  -contador de vistas
-  -imagen
+  4.1 texto
+  4.2 fecha y hora
+  4.3 autor
+  4.4 contador de vistas
+  4.5 imagen
 5. Categorias
 6. Sub-categorias (Revisar esto, ahora que lo pienso no se si sea buena idea)
 7. Comentarios (añadir reacciones en algun momento)
