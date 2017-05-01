@@ -6,4 +6,4 @@ Ideas:
 3. Categorias con sub-categorias
 4. Reaccion
 5. vistas de la pagina y de los posts
-6. ...
+6. compartir los post en otras redes sociales 
