@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('blog.urls'))    # Incluye las urls de BLOG cuando se solicita la direccion base
+    url(r'^', include('blog.urls')),    # Incluye las urls de BLOG cuando se solicita la direccion base
+    url(r'^users/', include('users.urls'))
 ]
