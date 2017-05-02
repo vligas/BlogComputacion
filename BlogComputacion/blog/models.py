@@ -7,7 +7,8 @@ class Post(models.Model):
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True) # para que se llene automaticamente al instanciar el objeto
     cont_vist = models.IntegerField()
+    cover = models.ImageField()
 
 class ImgOfPost(models.Model):
-    #img = models.ImageField()
+    img = models.ImageField()
     Post = models.ForeignKey(Post, on_delete = models.CASCADE)
