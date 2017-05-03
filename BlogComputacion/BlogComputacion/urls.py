@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth.views import login
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('blog.urls')),    # Incluye las urls de BLOG cuando se solicita la direccion base
-    url(r'^users/', include('users.urls'))
+    url(r'^users/', include('users.urls')),
+    url(r'^login/', login, {'template_name':'users/login.html'})
 ]
