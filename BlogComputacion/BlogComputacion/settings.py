@@ -125,9 +125,9 @@ mimetypes.add_type("text/css", ".css", True)
 
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 
-EMAIL_USE_TlS = True
+EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 25
+EMAIL_PORT = 587
 EMAIL_HOST_USER = 'probandoelblogcomp@gmail.com'
 EMAIL_HOST_PASSWORD = '1234qwerty'
-EMAIL_BACKEND = "django.core.email.backends.smtp.EmailBackend"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
