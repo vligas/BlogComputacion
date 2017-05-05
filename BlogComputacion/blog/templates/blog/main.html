@@ -3,57 +3,72 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{%block title%}{% endblock %}</title>
+    <title>Blog | {%block title%}{% endblock %}</title>
 
-    <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Antic|Crimson+Text|Raleway|Space+Mono|Work+Sans|Montserrat" rel="stylesheet">
+    <script src="https://use.fontawesome.com/3aa6c402c1.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'blog/css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
+
+
+
     {% block extraStyles %}{% endblock %}
   </head>
   <body>
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Blog FACYT Computacion</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="#"><a href="#">Inicio</a></li>
-            <li><a href="#">Posts</a></li>
-            <li><a href="#">Contactanos</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="../navbar/">Default</a></li>
-            <li class="active"><a href="./">Static top <span class="sr-only">(current)</span></a></li>
-            <li><a href="../navbar-fixed-top/">Fixed top</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+    <nav class="transparent main-nav" role="navigation">
+      <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#!">Contactanos</a></li>
+          <li><a href="#!">Todos los posts</a></li>
+          <li><a href="#!">Otro Link</a></li>
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="#">Navbar Link</a></li>
+        </ul>
+
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a href="#!">one</a></li>
+          <li><a href="#!">two</a></li>
+          <li class="divider"></li>
+          <li><a href="#!">three</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       </div>
     </nav>
+    <div class="main-banner">
+      <div class="banner-content">
+        <h1>Blog de Computacion</h1>
+        <h5>Por estudiantes - Para estudiantes</h5>
+      </div>
+    </div>
+
+    <div class="section"></div>
+
     <div class="container">
       {% block content %}
         {# contenido de la pagina #}
       {% endblock %}
     </div>
 
-    <script src="{% static 'blog/js/main.js' %}" charset="utf-8"></script>
+    <script src="{% static 'blog/js/jquery-3.2.1.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'blog/js/materialize.min.js' %}" charset="utf-8"></script>
+
     {% block extraScripts %}{% endblock %}
+
+
+    <script type="text/javascript">
+    $("document").ready(function(){
+      $(".button-collapse").sideNav();
+    });
+
+    $("#posts").masonry({
+      itemSelector: '.card',
+      columnWidth: 300,
+    });
+    </script>
   </body>
 </html>
