@@ -4,6 +4,11 @@ html
   color: #3f3f3f;
 }
 
+.tabs {
+overflow: hidden;
+}
+
+
 
 .brand-logo
 {
@@ -101,11 +106,6 @@ nav.main-nav
 
 
 
-
-
-
-
-
 .cards-container {
   column-break-inside: avoid;
 }
@@ -139,3 +139,61 @@ nav.main-nav
 .text-center {
   text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: lightblue;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid lightblue;
+  box-shadow: 0 1px 0 0 lightblue;
+}
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid lightgreen;
+  box-shadow: 0 1px 0 0 lightgreen;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid tomato;
+  box-shadow: 0 1px 0 0 tomato;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: lightblue;
+}
+
+
+
+
+.input-field input[type=password]:focus + label {
+  color: lightblue;
+}
+/* label underline focus color */
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid lightblue;
+  box-shadow: 0 1px 0 0 lightblue;
+}
+/* valid color */
+.input-field input[type=password].valid {
+  border-bottom: 1px solid lightgreen;
+  box-shadow: 0 1px 0 0 lightgreen;
+}
+/* invalid color */
+.input-field input[type=password].invalid {
+  border-bottom: 1px solid tomato;
+  box-shadow: 0 1px 0 0 tomato;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: lightblue;

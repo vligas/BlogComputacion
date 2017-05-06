@@ -12,6 +12,13 @@
 
     <link rel="stylesheet" href="{% static 'blog/css/materialize.min.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
+    <style media="screen">
+      nav.main-nav
+      {
+        margin-bottom:50px;
+        position:relative;
+      }
+    </style>
 
 
 
@@ -24,7 +31,7 @@
       <li><a href="#!">Mis posts</a></li>
       <li><a href="#!">Escribir Post</a></li>
       <li class="divider"></li>
-      <li><a href="{% url 'logout' %}">Log out</a></li>
+      <li><a href="#!">Log out</a></li>
     </ul>
 
     <ul id="dropdown2" class="dropdown-content">
@@ -35,17 +42,14 @@
       <li><a href="#!">Log out</a></li>
     </ul>
 
-    <nav class="transparent main-nav" role="navigation">
+    <nav class="blue main-nav" role="navigation">
       <div class="nav-wrapper container"><a id="logo-container" href="{% url 'index' %}" class="brand-logo">Logo</a>
         <ul class="right hide-on-med-and-down">
           <li><a href="{% url 'contact' %}">Contactanos</a></li>
           <li><a href="{% url 'showAll' %}">Todos los posts</a></li>
-          {% if not user.is_authenticated %}
           <li><a href="{% url 'registrar' %}">Sign Up</a></li>
           <li><a href="{% url 'login' %}">Log In</a></li>
-          {% else %}
           <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Mi cuenta<i class="material-icons right">arrow_drop_down</i></a></li>
-          {% endif %}
         </ul>
         <ul id="nav-mobile" class="side-nav">
           <li><a href="{% url 'contact' %}">Contactanos</a></li>
@@ -58,21 +62,6 @@
       </div>
     </nav>
 
-
-
-
-
-
-
-
-
-
-    <div class="main-banner">
-      <div class="banner-content">
-        <h1>Blog de Computacion</h1>
-        <h5>Por estudiantes - Para estudiantes</h5>
-      </div>
-    </div>
 
     <div class="section"></div>
 

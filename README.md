@@ -1,12 +1,13 @@
 # BlogComputacion
 
-#### Ideas: 
+#### Ideas:
 1. Tarjetas en el index
 2. Voltear las tarjetas
 3. Categorias con sub-categorias
 4. Reaccion
 5. vistas de la pagina y de los posts
-6. compartir los post en otras redes sociales 
+6. compartir los post en otras redes sociales
+7. Agregar el Login y el SignUp para que funcione en una ventana modal :)
 
 
 
@@ -15,7 +16,7 @@
 
 ##### Tablas:
 
-1. Permisologia (?) 
+1. Permisologia (?)
 2. Usuarios<br>
   2.1 Nombre<br>
   2.2 Correo<br>
@@ -32,3 +33,8 @@
 6. Comentarios (añadir reacciones en algun momento)
 7. Ideas? ...
 
+
+
+##### Arreglar:
+
+1. Mostrar errores si llenas los formularios mal
