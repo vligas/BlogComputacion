@@ -123,8 +123,9 @@ STATIC_URL = '/static/'
 import mimetypes
 mimetypes.add_type("text/css", ".css", True)
 
+LOGIN_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL = reverse_lazy('index')
-LOGOUT_REDIRECT_URL = reverse_lazy('login')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
