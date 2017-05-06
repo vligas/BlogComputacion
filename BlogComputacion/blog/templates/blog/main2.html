@@ -47,16 +47,22 @@
         <ul class="right hide-on-med-and-down">
           <li><a href="{% url 'contact' %}">Contactanos</a></li>
           <li><a href="{% url 'showAll' %}">Todos los posts</a></li>
+          {% if not user.is_authenticated %}
           <li><a href="{% url 'registrar' %}">Sign Up</a></li>
           <li><a href="{% url 'login' %}">Log In</a></li>
+          {% else %}
           <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Mi cuenta<i class="material-icons right">arrow_drop_down</i></a></li>
+          {% endif %}
         </ul>
         <ul id="nav-mobile" class="side-nav">
           <li><a href="{% url 'contact' %}">Contactanos</a></li>
           <li><a href="{% url 'showAll' %}">Todos los posts</a></li>
+          {% if not user.is_authenticated %}
           <li><a href="{% url 'registrar' %}">Sign Up</a></li>
           <li><a href="{% url 'login' %}">Log In</a></li>
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Mi cuenta<i class="material-icons right">arrow_drop_down</i></a></li>
+          {% else %}
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Mi cuenta<i class="material-icons right">arrow_drop_down</i></a></li>
+          {% endif %}
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       </div>
