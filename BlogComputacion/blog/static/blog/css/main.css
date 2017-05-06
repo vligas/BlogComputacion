@@ -1,0 +1,199 @@
+html
+{
+  font-family: "Raleway";
+  color: #3f3f3f;
+}
+
+.tabs {
+overflow: hidden;
+}
+
+
+
+.brand-logo
+{
+  font-family: "Space Mono";
+}
+
+
+h1, h2, h3, h4, h5, h6, .card-title
+{
+  font-family: "Montserrat";
+  /*font-weight:bold;*/
+}
+
+img
+{
+  width:100%;
+  height:100%;
+}
+
+nav.main-nav
+{
+  position:absolute;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.main-banner
+{
+  width:100%;
+  height:50vh;
+  background: url('../img/teclado.jpg') bottom;
+  -webkit-background-size: cover;
+  background-size: cover;
+
+  position: relative;
+  z-index: -2;
+}
+.main-banner::after
+{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.49);
+}
+
+.banner-content
+{
+  padding-top:20vh;
+  color:white;
+  text-align: center;
+  position:relative;
+  z-index: 1;
+  width:50%;
+  margin:auto;
+}
+.banner-content h1
+{
+  font-weight:bolder;
+}
+.banner-content p
+{
+  font-weight: normal;
+}
+
+.categorias .chip
+{
+  background: inherit;
+  color:rgb(193, 193, 193);
+  border:1px solid rgb(228, 228, 228);
+  transition: all 0.3s ease;
+  font-weight: 400;
+}
+.categorias .chip.active, .categorias .chip:hover
+{
+  background: inherit;
+  color:white;
+  border:1px solid rgb(48, 181, 255);
+  background: rgb(48, 181, 255);
+}
+
+.categorias a
+{
+  margin-left: 7px;
+}
+
+.card-info
+{
+  overflow: hidden;
+}
+
+
+
+
+.cards-container {
+  column-break-inside: avoid;
+}
+
+.cards-container .card {
+  display: inline-block;
+  overflow: visible;
+}
+
+@media only screen and (max-width: 600px) {
+  .cards-container {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
+}
+@media only screen and (min-width: 601px) {
+  .cards-container {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
+}
+@media only screen and (min-width: 993px) {
+  .cards-container {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+.text-center {
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: lightblue;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid lightblue;
+  box-shadow: 0 1px 0 0 lightblue;
+}
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid lightgreen;
+  box-shadow: 0 1px 0 0 lightgreen;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid tomato;
+  box-shadow: 0 1px 0 0 tomato;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: lightblue;
+}
+
+
+
+
+.input-field input[type=password]:focus + label {
+  color: lightblue;
+}
+/* label underline focus color */
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid lightblue;
+  box-shadow: 0 1px 0 0 lightblue;
+}
+/* valid color */
+.input-field input[type=password].valid {
+  border-bottom: 1px solid lightgreen;
+  box-shadow: 0 1px 0 0 lightgreen;
+}
+/* invalid color */
+.input-field input[type=password].invalid {
+  border-bottom: 1px solid tomato;
+  box-shadow: 0 1px 0 0 tomato;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: lightblue;

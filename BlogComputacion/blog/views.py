@@ -10,3 +10,7 @@ def showAll(request):
 
 def showOne(request, id):
     return HttpResponse('se ingreso el id ' + id)
+
+
+def contact(request):
+    return HttpResponse('contact form')

@@ -1,7 +1,152 @@
 {% extends 'blog/main.html' %}
+{% load staticfiles %}
+{% block title %}Home Page{% endblock %}
 
-{% block title %}index{% endblock %}
+
+
 
 {% block content %}
-<h1>Aqui va el contenido :)</h1>
+<div class="categorias center">
+  <a href="#!">
+    <div class="chip active">
+      Todos
+    </div>
+  </a>
+  <a href="#!">
+    <div class="chip">
+      Lenguajes
+    </div>
+  </a>
+  <a href="#!">
+    <div class="chip">
+      Frameworks
+    </div>
+  </a>
+  <a href="#!">
+    <div class="chip">
+      Diseño Web
+    </div>
+  </a>
+  <a href="#!">
+    <div class="chip">
+      Bases de Datos
+    </div>
+  </a>
+  <a href="#!">
+    <div class="chip">
+      Teoria
+    </div>
+  </a>
+  <a href="#!">
+    <div class="chip">
+      Otros
+    </div>
+  </a>
+</div>
+<div class="section">
+  <div class="row">
+    <div class="col s12 m8 cards-container">
+      <div class="card">
+        <div class="card-image">
+          <img src="{% static 'blog/img/django.jpg' %}">
+          </div>
+        <div class="card-content">
+          <p class="card-info grey-text">
+            <small>
+              <span class="left">Por Victor Ligas</span> <span class="right">4 de abril del 2016</span>
+            </small>
+          </p>
+          <p class="title"><h5>Migraciones en Django</h5></p>
+          <div class="divider"></div>
+          <div class="section">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam quis iusto tempore cumque similique saepe illum? Deleniti tempore nemo repellat magnam, cum reprehenderit consectetur necessitatibus quos nostrum ipsum quisquam.</p>
+          </div>
+        </div>
+        <div class="card-action">
+          <div class="row">
+            <div class="col s4"><a href="#" class="blue-text">Leer</a></div>
+            <div class="col s4 grey-text text-darken-2"><i class="fa fa-eye"></i> 320</div>
+            <div class="col s4 grey-text text-darken-2"><i class="fa fa-comment"></i> 3</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-image">
+          <img src="{% static 'blog/img/redes.jpg' %}">
+          </div>
+        <div class="card-content">
+          <p class="card-info grey-text">
+            <small>
+              <span class="left">Por Crismary Castellanos</span> <span class="right">4 de abril del 2016</span>
+            </small>
+          </p>
+          <p class="title"><h5>Redes Neuronales con Python</h5></p>
+          <div class="divider"></div>
+          <div class="section">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt beatae neque officia cum accusantium quo, consequuntur asperiores. Sed dolorum consectetur fugit illum dolor doloremque. Voluptatibus dolor, non modi maxime impedit.</p>
+          </div>
+        </div>
+        <div class="card-action">
+          <div class="row">
+            <div class="col s4"><a href="#" class="blue-text">Leer</a></div>
+            <div class="col s4 grey-text text-darken-2"><i class="fa fa-eye"></i> 2.1k</div>
+            <div class="col s4 grey-text text-darken-2"><i class="fa fa-comment"></i> 50</div>
+          </div>
+        </div>
+      </div>
+
+       <div class="card">
+         <div class="card-image">
+           <img src="{% static 'blog/img/unity.jpg' %}">
+         </div>
+         <div class="card-content">
+           <p class="card-info grey-text">
+             <small>
+               <span class="left">Por David</span> <span class="right">4 de abril del 2016</span>
+             </small>
+           </p>
+           <p class="title"><h5>Desarrollo de Videojuegos en Unity</h5></p>
+           <div class="divider"></div>
+           <div class="section">
+             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab tempora hic cum aperiam perferendis sequi, eum officiis nihil, aut, aliquid consequatur quidem necessitatibus deleniti rerum eaque neque porro cupiditate nulla!</p>
+           </div>
+         </div>
+         <div class="card-action">
+           <div class="row">
+             <div class="col s4"><a href="#" class="blue-text">Leer</a></div>
+             <div class="col s4 grey-text text-darken-2"><i class="fa fa-eye"></i> 1.5k</div>
+             <div class="col s4 grey-text text-darken-2"><i class="fa fa-comment"></i> 30</div>
+           </div>
+         </div>
+       </div>
+
+       <div class="card">
+         <div class="card-image">
+           <img src="{% static 'blog/img/r.png' %}">
+         </div>
+         <div class="card-content">
+           <p class="card-info grey-text">
+             <small>
+               <span class="left">Por Alvaro</span> <span class="right">4 de abril del 2016</span>
+             </small>
+           </p>
+           <p class="title"><h5>Introduccion a R</h5></p>
+           <div class="divider"></div>
+           <div class="section">
+             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae molestiae odit tempore rem nostrum hic fuga inventore consequuntur dignissimos mollitia, atque quas debitis dolorum commodi. Recusandae incidunt corporis voluptatem, necessitatibus?</p>
+           </div>
+         </div>
+         <div class="card-action">
+           <div class="row">
+             <div class="col s4"><a href="#" class="blue-text">Leer</a></div>
+             <div class="col s4 grey-text text-darken-2"><i class="fa fa-eye"></i> 1.5k</div>
+             <div class="col s4 grey-text text-darken-2"><i class="fa fa-comment"></i> 30</div>
+           </div>
+         </div>
+       </div>
+    </div>
+    <div class="col s12 m4">
+    </div>
+    </div>
+  </div>
 {% endblock %}

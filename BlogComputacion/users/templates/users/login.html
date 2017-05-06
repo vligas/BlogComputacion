@@ -1,33 +1,32 @@
-{% block contect %}
+{% extends 'blog/main2.html' %}
+
+
+{% block  title %}Log In{% endblock %}
+
+{% block content %}
 
 <form method="post">
   {% csrf_token %}
   <div class="row">
-    <div class="col-md-6 col-md-offseft-3">
-      <div class="from-group">
-        <label for="username">Nombre de Usuario:</label>
-        <input class = "form-control" type="text" name="username">
-      </div>
-    </div>
-  </div>
+    <div class="col m6 offset-m3 card">
+      <div class="card-content">
 
-  <div class="row">
-    <div class="col-md-6 col-md-offseft-3">
-      <div class="from-group">
-        <label for="username">Constraseña:</label>
-        <input class = "form-control" type="password" name="password">
+        <div class="input-field ">
+          <label for="username">Nombre de Usuario:</label>
+          <input class = "form-control" type="text" name="username" id="username">
+        </div>
+        <div class="input-field ">
+          <label for="password">Constraseña:</label>
+          <input class = "form-control" type="password" name="password" id="password">
+        </div>
+        <div class="input-field">
+          <a href="{% url 'password_reset' %}">Olvidé mi constraseña</a>
+          <br><br>
+          <input class = "btn blue" type="submit" value = "Ingresar">
+        </div>
+      </div>
       </div>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6 col-md-offseft-3">
-      <div class="from-group">
-        <a href="{% url 'password_reset' %}">Olvidé mi constraseña</a>
-        <input class = "btn btn-primary" type="submit" value = "Ingresar">
-      </div>
-    </div>
-  </div>
 </form>
 
 {% endblock %}

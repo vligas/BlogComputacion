@@ -21,11 +21,5 @@ from django.contrib.auth.decorators import login_required
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('blog.urls')),    # Incluye las urls de BLOG cuando se solicita la direccion base
-    url(r'^users/', include('users.urls')),
-    url(r'^accounts/login/', login, {'template_name':'users/login.html'}, name = 'login'),
-    url(r'^logout/', login_required(logout_then_login), name = "logout"),
-    url(r'^reset/password_reset', password_reset,{'template_name':'registration/password_reset_form.html','email_template_name': 'registration/password_reset_email.html'},name='password_reset'),
-    url(r'^password_reset_done', password_reset_done,{'template_name': 'registration/password_reset_done.html'},name='password_reset_done'),
-    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>.+)/$', password_reset_confirm,{'template_name': 'registration/password_reset_confirm.html'},name='password_reset_confirm'),
-    url(r'^reset/done', password_reset_complete, {'template_name': 'registration/password_reset_complete.html'},name='password_reset_complete'),
+    url(r'^users/', include('users.urls')), # el resto de urls se incluyeron en este
 ]
