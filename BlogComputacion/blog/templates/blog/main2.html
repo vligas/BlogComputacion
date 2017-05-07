@@ -31,7 +31,7 @@
       <li><a href="#!">Mis posts</a></li>
       <li><a href="#!">Escribir Post</a></li>
       <li class="divider"></li>
-      <li><a href="#!">Log out</a></li>
+      <li><a href="{% url 'logout' %}">Log out</a></li>
     </ul>
 
     <ul id="dropdown2" class="dropdown-content">
@@ -39,7 +39,7 @@
       <li><a href="#!">Mis posts</a></li>
       <li><a href="#!">Escribir Post</a></li>
       <li class="divider"></li>
-      <li><a href="#!">Log out</a></li>
+      <li><a href="{% url 'logout' %}">Log out</a></li>
     </ul>
 
     <nav class="blue main-nav" role="navigation">
@@ -71,6 +71,7 @@
 
     <div class="section"></div>
 
+
     <div class="container">
       {% block content %}
         {# contenido de la pagina #}
@@ -88,6 +89,15 @@
       $(".button-collapse").sideNav();
       $('.dropdown-button').dropdown();
       $('.modal').modal();
+
+      {% if form.errors %}
+        {% for field in form %}
+          {% for error in field.errors %}
+            Materialize.toast("{{error|escape}}", 4000)
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+
 
     });
 
