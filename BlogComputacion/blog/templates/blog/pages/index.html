@@ -61,24 +61,6 @@
 </div>
 
 
-<div class="fixed-action-btn toolbar">
-  <a class="btn-floating btn-large grey darken-3">
-    <i class="large material-icons">search</i>
-  </a>
-  <ul>
-    <!-- <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">insert_chart</i></a></li>
-    <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">format_quote</i></a></li>
-    <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">publish</i></a></li>
-    <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">attach_file</i></a></li> -->
-    <li>
-      <form action="GET">
-        <input type="text" name="busqueda" class="input-field">
-      </form>
-    </li>
-
-  </ul>
-</div>
-
 <div class="section">
   <div class="row">
     <div class="col s12 l8 cards-container">
@@ -215,11 +197,16 @@
       <div class="sidebar">
         <div class="popular-posts">
           <h3 class="section-title">Posts Populares</h3>
+
+
           <div class="section">
             <div class="row popular-post">
-              <div class="col s3">
+              <div class="col s3 image-post">
                 <div class="image-cropper z-depth-3">
                   <img src="{% static 'blog/img/django.jpg' %}" alt="" >
+                </div>
+                <div class="vistas blue center white-text z-depth-3">
+                  <i class="fa fa-eye"></i> 320
                 </div>
               </div>
               <div class="col s9">
@@ -233,11 +220,16 @@
             </div>
             <div class="divider"></div>
           </div>
+
+
           <div class="section">
             <div class="row popular-post">
-              <div class="col s3">
+              <div class="col s3 image-post">
                 <div class="image-cropper z-depth-3">
                   <img src="{% static 'blog/img/redes.jpg' %}" alt="" >
+                </div>
+                <div class="vistas blue center white-text z-depth-3">
+                  <i class="fa fa-eye"></i> 2.1k
                 </div>
               </div>
               <div class="col s9">
@@ -250,15 +242,20 @@
               </div>
             </div>
             <div class="divider"></div>
-
           </div>
+
+
 
           <div class="section">
             <div class="row popular-post">
-              <div class="col s3">
+              <div class="col s3 image-post">
                 <div class="image-cropper z-depth-3">
                   <img src="{% static 'blog/img/unity.jpg' %}" alt="" >
                 </div>
+                <div class="vistas blue center white-text z-depth-3">
+                  <i class="fa fa-eye"></i> 1.5k
+                </div>
+
               </div>
               <div class="col s9">
                 <div class="tags">
@@ -269,8 +266,9 @@
               </div>
             </div>
             <div class="divider"></div>
-
           </div>
+
+
 
         <br>
         </div>
@@ -287,16 +285,14 @@
               Ya que este fue un proyecto que desarrollamos estando en el 4to (cuarto) semestre, es muy probable que tenga cosas mejorables y algunos errores, estamos abiertos a sugerencias o criticas constructivas, haznos saber tu opinion. <i class="fa fa-smile-o" aria-hidden="true"></i>
             </p>
             <br>
-            <span class="card-title activator blue-text text-darken-3">Escribenos <span><i class="fa fa-pencil right" aria-hidden="true"></i></span>
+            <span class="card-title activator grey-text text-darken-3">Escribenos <span class="btn-floating right grey darken-3"><i class="fa fa-pencil" aria-hidden="true"></i></span>
 
           </div>
           <div class="card-reveal black-text">
             <span class="card-title grey-text text-darken-4">Escribenos <i class="fa fa-pencil right" aria-hidden="true"></i></span>
-            <form class="col s12">
+            <form class="col s12" method="POST">
               <div class="row">
                 <div class="input-field col s12">
-                  <br>
-                  <br>
                   <textarea id="mensaje" name="mensaje" class="materialize-textarea"></textarea>
                   <label for="mensaje">Sugerencia</label>
                   <button type="submit" name="button" class="btn blue">enviar</button>
