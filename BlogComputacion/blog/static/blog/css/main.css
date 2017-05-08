@@ -310,3 +310,23 @@ img {
   background: white;
   color:black;
 }
+
+.vertical-center
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+a.article-link
+{
+  color:inherit;
+  transition: all 0.5s ease;
+}
+
+a.article-link:hover
+{
+  color: #2196F3;
+}
