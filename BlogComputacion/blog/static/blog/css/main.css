@@ -14,6 +14,11 @@ overflow: hidden;
   border-radius:10px;
 }
 
+body
+{
+  background-color: #F9F9F9;
+}
+
 
 .brand-logo
 {
@@ -33,6 +38,7 @@ nav.main-nav
   position:absolute;
   font-weight: bold;
   /*z-index: 1;*/
+  box-shadow: None;
 }
 
 .main-banner
@@ -104,7 +110,11 @@ nav.main-nav
 }
 
 
-
+.raised
+{
+  margin-top: -70px;
+  margin-bottom:30px;
+}
 
 .cards-container {
   column-break-inside: avoid;
@@ -139,16 +149,6 @@ nav.main-nav
 .text-center {
   text-align: center;
 }
-
-
-
-
-
-
-
-
-
-
 /* label focus color */
 .input-field input[type=text]:focus + label {
   color: #2196F3;
@@ -262,4 +262,16 @@ img {
 {
   font-size:15px;
   margin:10px;
+}
+
+
+.card-category
+{
+  padding:10px;
+}
+
+.card-category .chip
+{
+  background: white;
+  color:black;
 }

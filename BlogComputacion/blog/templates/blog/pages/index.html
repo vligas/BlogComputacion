@@ -6,6 +6,22 @@
 
 
 {% block content %}
+
+
+<nav class="raised">
+  <div class="nav-wrapper grey darken-3 z-depth-2">
+    <form method="GET">
+      <div class="input-field">
+        <input id="search" type="search" name="q" required>
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons">close</i>
+      </div>
+    </form>
+  </div>
+</nav>
+
+
+
 <div class="categorias center">
   <a href="#!">
     <div class="chip active">
@@ -43,9 +59,33 @@
     </div>
   </a>
 </div>
+
+
+<div class="fixed-action-btn toolbar">
+  <a class="btn-floating btn-large grey darken-3">
+    <i class="large material-icons">search</i>
+  </a>
+  <ul>
+    <!-- <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">insert_chart</i></a></li>
+    <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">format_quote</i></a></li>
+    <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">publish</i></a></li>
+    <li class="waves-effect waves-light"><a href="#!"><i class="material-icons">attach_file</i></a></li> -->
+    <li>
+      <form action="GET">
+        <input type="text" name="busqueda" class="input-field">
+      </form>
+    </li>
+
+  </ul>
+</div>
+
 <div class="section">
   <div class="row">
     <div class="col s12 m8 cards-container">
+
+
+
+
       <div class="card z-depth-2">
         <div class="card-image">
           <img src="{% static 'blog/img/django.jpg' %}">
@@ -69,7 +109,16 @@
             <div class="col s4 grey-text text-darken-2"><i class="fa fa-comment"></i> 3</div>
           </div>
         </div>
+        <div class="card-category grey darken-3 center">
+          <div class="chip">Django</div>
+          <div class="chip">Python</div>
+          <div class="chip">Framework</div>
+        </div>
       </div>
+
+
+
+
       <div class="card z-depth-2">
         <div class="card-image">
           <img src="{% static 'blog/img/redes.jpg' %}">
@@ -93,7 +142,15 @@
             <div class="col s4 grey-text text-darken-2"><i class="fa fa-comment"></i> 50</div>
           </div>
         </div>
+        <div class="card-category grey darken-3 center">
+          <div class="chip z-depth-1">IA</div>
+          <div class="chip z-depth-1">Python</div>
+          <div class="chip z-depth-1">Avanzado</div>
+        </div>
       </div>
+
+
+
 
        <div class="card z-depth-2">
          <div class="card-image">
@@ -118,7 +175,13 @@
              <div class="col s4 grey-text text-darken-2"><i class="fa fa-comment"></i> 30</div>
            </div>
          </div>
+         <div class="card-category grey darken-3 center">
+           <div class="chip z-depth-1">Videojuegos</div>
+           <div class="chip z-depth-1">Unity</div>
+         </div>
        </div>
+
+
 
        <div class="card z-depth-2">
          <div class="card-image">
@@ -143,8 +206,14 @@
              <div class="col s4 grey-text text-darken-2"><i class="fa fa-comment"></i> 30</div>
            </div>
          </div>
+         <div class="card-category grey darken-3 center">
+           <div class="chip z-depth-1">R</div>
+           <div class="chip z-depth-1">Estadistica</div>
+         </div>
        </div>
     </div>
+
+
     <div class="col s12 m4">
       <div class="sidebar">
         <div class="popular-posts">
@@ -211,7 +280,7 @@
         <div class="motivacion card blue white-text">
           <div class="card-content">
             <h3 class="text-center">
-              Motivacion
+              Motivacion <i class="fa fa-trophy" aria-hidden="true"></i>
             </h3>
             <p>
               Esta pagina surgio como un proyecto para ayudar en la universidad a los estudiantes de los primeros semestres a tener un poco de contacto con la carrera a traves de pequeños tutoriales o tips de diversos temas, principalmente de los que podiamos aportar algo, como lo son Desarrollo web, lenguajes de programacion como C, C++, python, etc.
@@ -241,7 +310,7 @@
         </div>
         <br>
         <div class="categorias-populares">
-          <h3 class="section-title">Categorias Populares</h3>
+          <h3 class="section-title">Categorias Populares <i class="fa fa-tags" aria-hidden="true"></i></h3>
 
           <div class="chip z-depth-1">IA</div>
           <div class="chip z-depth-1">Python</div>
