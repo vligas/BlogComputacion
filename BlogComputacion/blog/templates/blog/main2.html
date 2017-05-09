@@ -28,16 +28,20 @@
 
     <ul id="dropdown1" class="dropdown-content">
       <li><a href="#!">Mi perfil</a></li>
-      <li><a href="#!">Mis posts</a></li>
-      <li><a href="#!">Escribir Post</a></li>
+      {% if perms.Post.add_Post %}
+        <li><a href="#!">Mis posts</a></li>
+        <li><a href="#!">Escribir Post</a></li>
+      {% endif %}
       <li class="divider"></li>
       <li><a href="{% url 'logout' %}">Log out</a></li>
     </ul>
 
     <ul id="dropdown2" class="dropdown-content">
       <li><a href="#!">Mi perfil</a></li>
-      <li><a href="#!">Mis posts</a></li>
-      <li><a href="#!">Escribir Post</a></li>
+      {% if perms.Post.add_Post %}
+        <li><a href="#!">Mis posts</a></li>
+        <li><a href="#!">Escribir Post</a></li>
+      {% endif %}
       <li class="divider"></li>
       <li><a href="{% url 'logout' %}">Log out</a></li>
     </ul>
