@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.core.mail import send_mail
 
 # Create your views here.
@@ -17,5 +17,8 @@ def contact(request):
     return HttpResponse('contact form')
 
 def enviarSugerencia(request):
-    send_mail('Sugerencias', 'Una nueva sugerencia', 'probandoelblogcomp@gmail.com', ['probandoelblogcomp@gmail.com'], html_message = request.POST['mensaje'])
-    return  redirect('/')
+    if request.method == "POST" :
+        send_mail('Sugerencias', 'Una nueva sugerencia', 'probandoelblogcomp@gmail.com', ['probandoelblogcomp@gmail.com'], html_message = request.POST['mensaje'])
+        return  redirect('/')
+    else:
+        return Http404("Page not found")
