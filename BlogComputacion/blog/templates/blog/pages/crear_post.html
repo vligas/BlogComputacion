@@ -1,3 +1,4 @@
+{% extends 'blog/main2.html' %}
 {% block content %}
 
 <form action = "{% url 'create' %}" method="post" enctype="multipart/form-data"> <!-- Aqui era enctype el problema -->
