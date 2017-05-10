@@ -18,8 +18,14 @@ def contact(request):
 
 def enviarSugerencia(request):
     if request.method == "POST" :
+
         if len(request.POST['mensaje']) != 0 :
-            send_mail('Sugerencias', 'Una nueva sugerencia', 'probandoelblogcomp@gmail.com', ['probandoelblogcomp@gmail.com'], html_message = request.POST['mensaje'])
+            message = request.POST['mensaje']
+
+            if request.user.is_authenticated :
+                message = message + "<br>" + "Sugerencia hecha por: " + request.user.username
+
+            send_mail('Sugerencias', 'Una nueva sugerencia', 'probandoelblogcomp@gmail.com', ['probandoelblogcomp@gmail.com'], html_message = message)
         return  redirect('/')
     else:
         return Http404("Page not found")
