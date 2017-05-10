@@ -4,8 +4,13 @@
 <h3>Todos los posts: </h3>
 
 {% for entrada in object_list %}
+  <img src="{{ entrada.cover.url }}" alt="" class="responsive-img">
   <h5><a href="{{ entrada.id }}">{{ entrada.title }}</a></h5>
   <p>{{ entrada.text }}</p>
 {% endfor  %}
+<br>
+<br>
+<br>
+<br>
 
 {% endblock %}

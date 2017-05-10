@@ -1,6 +1,7 @@
 {% extends 'blog/main2.html' %}
 
  {% block content %}
+ <img src="{{ post.cover.url }}" alt="" class="responsive-img">
 <h3>{{ post.title }}</h3>
 
 <p>{{ post.text }}</p>
