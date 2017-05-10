@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.core.mail import send_mail
 from .forms import FormPost
+from django.shortcuts import redirect
 
 # Create your views here.
 def index(request):
@@ -19,6 +20,14 @@ def contact(request):
 
 def createPost(request):
     form = FormPost()
+
+    if request.method == "POST":
+        form = FormPost(request.POST)
+
+        if form.is_valid():
+            post.save()
+            return redirect('showOne', pk=post.pk)
+
     return render(request, 'blog/crear_post.html', {'form':form})
 
 
