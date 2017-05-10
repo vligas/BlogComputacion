@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.core.mail import send_mail
+from .forms import FormPost
 
 # Create your views here.
 def index(request):
@@ -17,7 +18,9 @@ def contact(request):
     return HttpResponse('contact form')
 
 def createPost(request):
-    pass
+    form = FormPost()
+    return render(request, 'blog/crear_post.html', {'form':form})
+
 
 def enviarSugerencia(request):
     if request.method == "POST" :
