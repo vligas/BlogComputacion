@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.core.mail import send_mail
 
 # Create your views here.
 def index(request):
@@ -14,3 +15,7 @@ def showOne(request, id):
 
 def contact(request):
     return HttpResponse('contact form')
+
+def enviarSugerencia(request):
+    send_mail('Sugerencias', 'Una nueva sugerencia', 'probandoelblogcomp@gmail.com', ['probandoelblogcomp@gmail.com'], html_message = request.POST['mensaje'])
+    return  redirect('/')

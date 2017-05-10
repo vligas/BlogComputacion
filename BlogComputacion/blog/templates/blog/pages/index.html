@@ -288,7 +288,7 @@
           </div>
           <div class="card-reveal black-text">
             <span class="card-title grey-text text-darken-4">Escribenos <i class="fa fa-pencil right" aria-hidden="true"></i></span>
-            <form class="col s12" method="POST">
+            <form class="col s12" action = "{% url 'enviarSugerencia' %}" method="POST">
               {% csrf_token %}
               <div class="row">
                 <div class="input-field col s12">
