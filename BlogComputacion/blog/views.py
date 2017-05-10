@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.core.mail import send_mail
 from .forms import FormPost
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
+from .models import Post
 
 # Create your views here.
 def index(request):
@@ -12,7 +13,8 @@ def showAll(request):
     return HttpResponse('Aqui estan todos los Posts')
 
 def showOne(request, id):
-    return HttpResponse('se ingreso el id ' + id)
+    post = get_object_or_404(Post, pk = id)
+    return render(request, 'blog/pages/detail.html', {'post':post})
 
 
 def contact(request):
