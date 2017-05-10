@@ -1,0 +1,11 @@
+{% extends 'blog/main2.html' %}
+{% block content %}
+
+<h3>Todos los posts: </h3>
+
+{% for entrada in object_list %}
+  <h5><a href="{{ entrada.id }}">{{ entrada.title }}</a></h5>
+  <p>{{ entrada.text }}</p>
+{% endfor  %}
+
+{% endblock %}

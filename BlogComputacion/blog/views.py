@@ -4,18 +4,21 @@ from django.core.mail import send_mail
 from .forms import FormPost
 from django.shortcuts import redirect, get_object_or_404
 from .models import Post
+from django.views.generic import ListView
 
 # Create your views here.
 def index(request):
     return render(request, 'blog/pages/index.html')
 
-def showAll(request):
-    return HttpResponse('Aqui estan todos los Posts')
+class showAll(ListView):
+    template_name = 'blog/pages/all_post_detail.html'
+    model = Post
+# def showAll(request):
+#     return HttpResponse('Aqui estan todos los Posts')
 
 def showOne(request, id):
     post = get_object_or_404(Post, pk = id)
     return render(request, 'blog/pages/detail.html', {'post':post})
-
 
 def contact(request):
     return HttpResponse('contact form')
