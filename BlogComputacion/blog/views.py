@@ -22,7 +22,7 @@ def createPost(request):
     form = FormPost()
 
     if request.method == "POST":
-        form = FormPost(request.POST)
+        form = FormPost(request.POST, request.FILES)
 
         if form.is_valid():
             post.save()
