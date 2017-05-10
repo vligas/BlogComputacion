@@ -25,10 +25,10 @@ def createPost(request):
         form = FormPost(request.POST, request.FILES)
 
         if form.is_valid():
-            post.save()
-            return redirect('showOne', pk=post.pk)
+            post = form.save() # aqui era form.save..... deje el post = form.save() para poder hacer post.pk despues
+            return redirect('showOne', id=post.pk) # aqui era id, no pk
 
-    return render(request, 'blog/crear_post.html', {'form':form})
+    return render(request, 'blog/pages/crear_post.html', {'form':form}) # aqui modifique la direccion del template y lo meti dentro de la carpeta pages
 
 
 def enviarSugerencia(request):

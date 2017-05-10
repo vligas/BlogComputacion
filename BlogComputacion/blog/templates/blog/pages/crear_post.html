@@ -1,6 +1,6 @@
 {% block content %}
 
-<form action = "{% url 'create' %}" method="post">
+<form action = "{% url 'create' %}" method="post" enctype="multipart/form-data"> <!-- Aqui era enctype el problema -->
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit" name="button">Enviar</button>
