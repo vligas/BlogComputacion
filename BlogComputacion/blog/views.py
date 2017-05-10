@@ -16,6 +16,9 @@ def showOne(request, id):
 def contact(request):
     return HttpResponse('contact form')
 
+def createPost(request):
+    pass
+
 def enviarSugerencia(request):
     if request.method == "POST" :
 

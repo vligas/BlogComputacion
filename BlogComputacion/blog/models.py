@@ -9,7 +9,7 @@ class Post(models.Model):
     # falta autor
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True) # para que se llene automaticamente al instanciar el objeto
-    cont_vist = models.IntegerField()
+    cont_vist = models.IntegerField(default=0)
     cover = models.ImageField()
 
     @method_decorator(permission_required('Post.add_Post', reverse_lazy('Post:Post')))
