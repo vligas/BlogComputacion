@@ -3,7 +3,7 @@
 <form action = "{% url 'create' %}" method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="button" name="button">Enviar</button>
+  <button type="submit" name="button">Enviar</button>
 </form>
 
 {% endblock %}
