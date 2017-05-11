@@ -1,32 +1,43 @@
 {% extends 'blog/main2.html' %}
+{% load widget_tweaks %} <!-- Cargo las nuevas funcionalidades de la app que descarge -->
 
 
 {% block  title %}Log In{% endblock %}
 
 {% block content %}
 
+
+
 <form method="post">
   {% csrf_token %}
   <div class="row">
     <div class="col m6 offset-m3 card">
       <div class="card-content">
-
+        {% with WIDGET_ERROR_CLASS='invalid' %}
         <div class="input-field ">
           <label for="username">Nombre de Usuario:</label>
-          <input class = "form-control" type="text" name="username" id="username">
+          {% render_field form.username %}
         </div>
         <div class="input-field ">
           <label for="password">Constraseña:</label>
-          <input class = "form-control" type="password" name="password" id="password">
+          {% render_field form.password %}
         </div>
         <div class="input-field">
           <a href="{% url 'password_reset' %}">Olvidé mi constraseña</a>
           <br><br>
           <input class = "btn blue" type="submit" value = "Ingresar">
         </div>
+        {% endwith %}
       </div>
       </div>
     </div>
 </form>
 
+
+{% endblock %}
+
+{% block extraScripts %}
+  <script type="text/javascript">
+    Materialize.toast('{{form.non_field_errors}}', 4000) // 4000 is the duration of the toast
+  </script>
 {% endblock %}

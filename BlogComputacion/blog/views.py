@@ -13,6 +13,7 @@ def index(request):
 class showAll(ListView):
     template_name = 'blog/pages/all_post_detail.html'
     model = Post
+    ordering = ['-created_at'] # para que ordene de menor a mayor (-) tomando en cuenta la fecha de creacion (created_at)
 # def showAll(request):
 #     return HttpResponse('Aqui estan todos los Posts')
 
