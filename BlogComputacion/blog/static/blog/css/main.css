@@ -103,8 +103,8 @@ nav.main-nav
   text-align: center;
   position:relative;
   z-index: 1;
-  width:50%;
-  margin:auto;
+  /*width:50%;*/
+  /*margin:auto;*/
 }
 .banner-content h1
 {
