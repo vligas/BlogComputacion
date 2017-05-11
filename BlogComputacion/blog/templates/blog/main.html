@@ -43,17 +43,17 @@
 
     <nav class="transparent main-nav" role="navigation">
       <div class="nav-wrapper container"><a id="logo-container" href="{% url 'index' %}" class="brand-logo"><img src="{% static 'blog/img/logo2.png' %}" alt="" class="responsive-img"> <span class="logo-text">p entonces q</span></a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="{% url 'contact' %}"><i class="fa fa-envelope" aria-hidden="true"></i> Contactanos</a></li>
-          <li><a href="{% url 'showAll' %}"><i class="fa fa-list" aria-hidden="true"></i> Todos los posts</a></li>
+        <ul class="right hide-on-med-and-down nav-ul">
+          <li><a href="{% url 'contact' %}"><i class="fa fa-envelope" aria-hidden="true"></i>Contactanos</a></li>
+          <li><a href="{% url 'showAll' %}"><i class="fa fa-list" aria-hidden="true"></i>Todos los posts</a></li>
           {% if not user.is_authenticated %}
-          <li><a href="{% url 'registrar' %}"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a></li>
-          <li><a href="{% url 'login' %}"><i class="fa fa-sign-in" aria-hidden="true"></i> Log In</a></li>
+          <li><a href="{% url 'registrar' %}"><i class="fa fa-user-plus" aria-hidden="true"></i>Sign Up</a></li>
+          <li><a href="{% url 'login' %}"><i class="fa fa-sign-in" aria-hidden="true"></i>Log In</a></li>
           {% else %}
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown1"> Mi cuenta<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Mi cuenta <i class="material-icons right dropdown-navbar">arrow_drop_down</i></a></li>
           {% endif %}
         </ul>
-        <ul id="nav-mobile" class="side-nav">
+        <ul id="nav-mobile" class="side-nav nav-ul">
           <li><a href="{% url 'contact' %}">Contactanos</a></li>
           <li><a href="{% url 'showAll' %}">Todos los posts</a></li>
           {% if not user.is_authenticated %}

@@ -15,6 +15,21 @@ overflow: hidden;
   /*position:relative;*/
 }
 
+.main-nav
+{
+  height:100px !important;
+}
+.dropdown-navbar
+{
+  margin-top:17px;
+}
+
+.nav-ul a
+{
+  line-height: 100px;
+  vertical-align: middle !important;
+}
+
 .logo-text
 {
   position:absolute;
