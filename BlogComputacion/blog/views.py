@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.core.mail import send_mail
 from .forms import FormPost
 from django.shortcuts import redirect, get_object_or_404
@@ -14,8 +14,6 @@ class showAll(ListView):
     template_name = 'blog/pages/all_post_detail.html'
     model = Post
     ordering = ['-created_at'] # para que ordene de menor a mayor (-) tomando en cuenta la fecha de creacion (created_at)
-# def showAll(request):
-#     return HttpResponse('Aqui estan todos los Posts')
 
 def showOne(request, id):
     post = get_object_or_404(Post, pk = id)
@@ -36,6 +34,21 @@ def createPost(request):
 
     return render(request, 'blog/pages/crear_post.html', {'form':form}) # aqui modifique la direccion del template y lo meti dentro de la carpeta pages
 
+def updatePost(request, id):
+    instance = get_object_or_404(Post, pk=id)
+    form = FormPost(request.POST or None, request.FILES or None, instance = instance)
+
+    if form.is_valid():
+        instance = form.save() # aqui era form.save..... deje el post = form.save() para poder hacer post.pk despues
+        instance.save()
+        return HttpResponseRedirect(instance.get_absolute_url())
+
+    context = {
+        "title": instance.title,
+        "instance": instance,
+        "form": form,
+    }
+    return render(request, 'blog/pages/crear_post.html', context)
 
 def enviarSugerencia(request):
     if request.method == "POST" :
