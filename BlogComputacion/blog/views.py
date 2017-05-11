@@ -27,7 +27,7 @@ def createPost(request):
     form = FormPost()
 
     if request.method == "POST":
-        form = FormPost(request.POST, request.FILES)
+        form = FormPost(request.POST ,request.FILES)
 
         if form.is_valid():
             post = form.save() # aqui era form.save..... deje el post = form.save() para poder hacer post.pk despues

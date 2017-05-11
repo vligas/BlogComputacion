@@ -1,10 +1,47 @@
 {% extends 'blog/main2.html' %}
+{% load widget_tweaks %} <!-- Cargo las nuevas funcionalidades de la app que descarge -->
 {% block content %}
+<div class="card">
+  <div class="card-content">
+    <h3 class="center">Crea tu post</h3>
+    <div class="divider"></div>
+    <br>
+    <br>
+    <div class="row">
+      <form action = "{% url 'create' %}" method="post" enctype="multipart/form-data" class="col s12 m8 offset-m2"> <!-- Aqui era enctype el problema -->
+        {% csrf_token %}
+        {% with WIDGET_ERROR_CLASS='invalid' %}
+        <div class="input-field">
+          {% render_field form.title class+="validate" %}
+          <label for="{{form.title.name}}" data-error="{% for error in form.title.errors %} {{error}} {% endfor %}">{{form.title.label}}</label>
+        </div>
+        <br>
+        <div class="input-field">
+          {% render_field form.text class+="materialize-textarea validate"%}
+          <label for="{{form.title.text}}" data-error="{% for error in form.text.errors %} {{error}} {% endfor %}">{{form.text.label}}</label>
+        </div>
+        <br>
+        <div class="input-field">
+          <div class="file-field input-field">
+            <div class="btn btn-small">
+              <span>{{form.cover.label}}</span>
+              {% render_field form.cover %}
+            </div>
+            <div class="file-path-wrapper">
+              <input id="aux" class="file-path validate {% if form.cover.errors %}invalid{% endif %}" type="text">
+            </div>
+          </div>
+        </div>
+        {% endwith %}
+        <br>
+        <br>
+        <button type="submit" name="button" class="btn">Guardar</button>
 
-<form action = "{% url 'create' %}" method="post" enctype="multipart/form-data"> <!-- Aqui era enctype el problema -->
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" name="button">Enviar</button>
-</form>
+
+      </form>
+    </div>
+
+  </div>
+</div>
 
 {% endblock %}

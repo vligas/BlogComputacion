@@ -21,7 +21,6 @@
     </style>
 
 
-
     {% block extraStyles %}{% endblock %}
   </head>
   <body>
@@ -30,7 +29,7 @@
       <li><a href="#!">Mi perfil</a></li>
       {% if perms.Post.add_Post %}
         <li><a href="#!">Mis posts</a></li>
-        <li><a href="#!">Escribir Post</a></li>
+        <li><a href="{% url 'create' %}">Escribir Post</a></li>
       {% endif %}
       <li class="divider"></li>
       <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>
@@ -41,7 +40,7 @@
       <li><a href="#!">Mi perfil</a></li>
       {% if perms.Post.add_Post %}
         <li><a href="#!">Mis posts</a></li>
-        <li><a href="#!">Escribir Post</a></li>
+        <li><a href="{% url 'create' %}">Escribir Post</a></li>
       {% endif %}
       <li class="divider"></li>
       <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>
