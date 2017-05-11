@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.http import HttpResponse, Http404
 from django.core.mail import send_mail
 from .forms import FormPost
 from django.shortcuts import redirect, get_object_or_404
@@ -38,10 +38,10 @@ def updatePost(request, id):
     instance = get_object_or_404(Post, pk=id)
     form = FormPost(request.POST or None, request.FILES or None, instance = instance)
 
-    if form.is_valid():
-        instance = form.save() # aqui era form.save..... deje el post = form.save() para poder hacer post.pk despues
-        instance.save()
-        return HttpResponseRedirect(instance.get_absolute_url())
+    if( request.method == "POST"):
+        if form.is_valid():
+            instance = form.save() # aqui era form.save..... deje el post = form.save() para poder hacer post.pk despues
+            return redirect(instance)
 
     context = {
         "title": instance.title,

@@ -14,7 +14,7 @@ class Post(models.Model):
     cover = models.ImageField()
 
     def get_absolute_url(self):
-        return reverse("blog:showOne", kwargs={"id":self.id})
+        return reverse("showOne", kwargs={"id":self.id})   # blog:showOne es invalido ya que no tenemos un "namespace" llamado blog
 
     @method_decorator(permission_required('Post.add_Post', reverse_lazy('Post:Post')))
     def dispatch(self, *args, **kwargs):

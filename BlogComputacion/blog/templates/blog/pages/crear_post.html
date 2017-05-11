@@ -2,7 +2,7 @@
 {% load widget_tweaks %} <!-- Cargo las nuevas funcionalidades de la app que descarge -->
 {% block content %}
     <div class="row">
-      <form action = "{% url 'create' %}" method="post" enctype="multipart/form-data" class="col s12 m8 offset-m2"> <!-- Aqui era enctype el problema -->
+      <form method="post" enctype="multipart/form-data" class="col s12 m8 offset-m2"> <!-- Aqui era enctype el problema -->
         <div class="card">
           <br>
           <br>
