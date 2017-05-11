@@ -1,42 +1,60 @@
 {% extends 'blog/main2.html' %}
+{% load widget_tweaks %} <!-- Cargo las nuevas funcionalidades de la app que descarge -->
 
 {% block title %} Sign Up {% endblock %}
 
 {% block content %}
 
+
 <form method="post">
   {% csrf_token %}
   <div class="row">
     <div class="col s12 m6 offset-m3 card">
-      <div class="input-field">
-        <label for="first_name">Nombre</label>
-        <input type="text" name="first_name" id="first_name">
-      </div>
-      <div class="input-field">
-        <label for="last_name">Apellido</label>
-        <input type="text" name="last_name" id="last_name">
-      </div>
-      <div class="input-field">
-        <label for="username">Nombre de usuario</label>
-        <input type="text" name="username" id="username">
-      </div>
-      <div class="input-field">
-        <label for="email">Correo</label>
-        <input type="email" name="email" id="email">
-      </div>
-      <div class="input-field">
-        <label for="password1">Contraseña</label>
-        <input type="password" name="password1" id="password1">
-      </div>
-      <div class="input-field">
-        <label for="password2">Repetir contraseña</label>
-        <input type="password" name="password2" id="password2">
-      </div>
-      <br><br>
+      <div class="card-content">
+        {% with WIDGET_ERROR_CLASS='invalid' %}
+        <div class="input-field">
+          <label for="{{form.first_name.id_for_label}}" data-error="{% for error in form.first_name.errors %} {{error}} {% endfor %}">{{form.first_name.label}}</label>
+          {# <input type="text" name="first_name" id="first_name">#}
+          {% render_field form.first_name class+="validate" %}
 
+        </div>
+        <div class="input-field">
+          {# <input type="text" name="last_name" id="last_name">#}
+          {% render_field form.last_name class+="validate" %}
+          <label for="{{form.last_name.id_for_label}}" data-error="{% for error in form.last_name.errors %} {{error}} {% endfor %}">{{form.last_name.label}}</label>
 
-      <button type="submit" class="btn blue">Registrarse</button>
-      <br><br><br>
+        </div>
+        <div class="input-field">
+          {# <input type="text" name="username" id="username">#}
+          {% render_field form.username class+="validate" %}
+          <label for="{{form.username.id_for_label}}" data-error="{% for error in form.username.errors %} {{error}} {% endfor %}">{{form.username.label}}</label>
+
+        </div>
+        <div class="input-field">
+          {# <input type="email" name="email" id="email">#}
+          {% render_field form.email class+="validate" %}
+          <label for="{{form.email.id_for_label}}" data-error="{% for error in form.email.errors %} {{error}} {% endfor %}">{{form.email.label}}</label>
+        </div>
+        <div class="input-field">
+          {# <input type="password" name="password1" id="password1">#}
+          {% render_field form.password1 class+="validate" %}
+          <label for="{{form.password1.id_for_label}}" data-error="{% for error in form.password1.errors %} {{error}} {% endfor %}">{{form.password1.label}}</label>
+
+        </div>
+        <div class="input-field">
+          {# <input type="password" name="password2" id="password2">#}
+          {% render_field form.password2 class+="validate" %}
+          <label for="{{form.password2.id_for_label}}" data-error="{% for error in form.password2.errors %} {{error}} {% endfor %}">{{form.password2.label}}</label>
+        </div>
+        <br><br>
+        {% endwith %}
+        <br>
+        <br>
+
+        <button type="submit" class="btn blue">Registrarse</button>
+        <br><br><br>
+
+      </div>
     </div>
   </div>
 </form>
