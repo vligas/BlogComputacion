@@ -5,6 +5,7 @@ from .forms import FormPost
 from django.shortcuts import redirect, get_object_or_404
 from .models import Post
 from django.views.generic import ListView
+from django.contrib.auth.decorators import permission_required, login_required
 
 # Create your views here.
 def index(request):
@@ -22,6 +23,8 @@ def showOne(request, id):
 def contact(request):
     return HttpResponse('contact form')
 
+@login_required
+@permission_required('blog.can_Post', raise_exception=True)
 def createPost(request):
     form = FormPost()
 
@@ -34,6 +37,9 @@ def createPost(request):
 
     return render(request, 'blog/pages/crear_post.html', {'form':form}) # aqui modifique la direccion del template y lo meti dentro de la carpeta pages
 
+
+@login_required
+@permission_required('blog.can_Post', raise_exception=True)
 def updatePost(request, id):
     instance = get_object_or_404(Post, pk=id)
     form = FormPost(request.POST or None, request.FILES or None, instance = instance)
