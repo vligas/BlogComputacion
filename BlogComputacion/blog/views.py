@@ -59,7 +59,7 @@ def updatePost(request, id):
         }
         return render(request, 'blog/pages/crear_post.html', context)
     else:
-        return redirect('showOne', id=post.pk)
+        return redirect('showOne', id=instance.id)
 
 def enviarSugerencia(request):
     if request.method == "POST" :
