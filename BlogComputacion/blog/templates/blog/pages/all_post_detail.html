@@ -1,20 +1,74 @@
 {% extends 'blog/main2.html' %}
 {% block content %}
 
-<h3>Todos los posts: </h3>
+<!-- <h1 class="center">Todos los posts: </h1> -->
 
-<h1>SI</h1>
+  <div class="row">
+    {% for entrada in object_list %}
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <div class="col s12 m5 img-post-all">
+            <img src="{{entrada.cover.url}}" alt="" class="responsive-img">
+          </div>
+          <h4>{{entrada.title}}</h4>
+          <div class="divider"></div>
+          <p class="card-info grey-text">
+            <small>
+              <span class="left">Por {{entrada.author.username}}. posted: {{entrada.created_at}}  <i class="fa fa-eye"></i> 1.5k</span>
+            </small>
+          </p>
+          <div class="section">
+            <p>{{entrada.text|truncatechars:500}}</p>
+          </div>
+          <div class="clearfix"></div>
+          <div class="center">
+            <a href="{{entrada.get_absolute_url}}" class="btn blue">Leer</a>
+          </div>
+          </div>
 
-{% for entrada in object_list %}
-  <img src="{{ entrada.cover.url }}" alt="" class="responsive-img">
-  <div>
-    <small>Por {{entrada.author.username}}, publicado: {{entrada.created_at}}</small>
-    <br>
-    <h5><a href="{{ entrada.id }}">{{ entrada.title }}</a></h5>
-    <p>{{ entrada.text }}</p>
+          <div class="card-category grey darken-3 center">
+
+            <div class="chip z-depth-1">Django</div>
+            <div class="chip z-depth-1">Base de datos</div>
+            <div class="chip z-depth-1">Backend</div>
+            <div class="chip z-depth-1">Medio</div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor  %}
+  </div>
+  <div class="row center">
+
+    {% if is_paginated %}
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}"><i class="material-icons">chevron_left</i></a></li>
+      {% else %}
+      <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+      {% endif %}
+      {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+      <li class="active blue"><a href="#!">{{ i }}</a></li>
+      {% else %}
+      <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+      {% endfor %}
+      {% if page_obj.has_next %}
+      <li class="waves-effect"><a href="?page={{ page_obj.next_page_number }}"><i class="material-icons">chevron_right</i></a></li>
+      {% else %}
+      <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+      {% endif %}
+    </ul>
+    {% endif %}
+  </div>
+
 
   </div>
-{% endfor  %}
+</div>
 <br>
 <br>
 <br>

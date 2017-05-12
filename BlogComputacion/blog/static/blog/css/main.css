@@ -421,3 +421,10 @@ a.article-link:hover
 {
   overflow:visible !important;
 }
+
+
+
+.img-post-all
+{
+  padding-left:0px !important;
+}
