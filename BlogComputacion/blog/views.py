@@ -24,7 +24,7 @@ def contact(request):
     return HttpResponse('contact form')
 
 @login_required
-@permission_required('blog.can_Post', raise_exception=True)
+@permission_required('blog.add_post', raise_exception=True)
 def createPost(request):
     form = FormPost()
 
@@ -41,7 +41,7 @@ def createPost(request):
 
 
 @login_required
-@permission_required('blog.can_Post', raise_exception=True)
+@permission_required('blog.add_post', raise_exception=True)
 def updatePost(request, id):
     instance = get_object_or_404(Post, pk=id)
     if instance.author == request.user :

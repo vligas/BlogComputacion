@@ -89,13 +89,19 @@
 
     <script type="text/javascript">
     $(document).ready(function(){
+
+      $("document").ready(function(){
+      $(".button-collapse").sideNav();
+      $('.dropdown-button').dropdown();
+      $('.modal').modal();
+
       $(".content-markdown").each(function()){
           var content = $(this).text()
           console.log(content)
           var markedContent = marked(content)
           console.log(msrkedContent)
           $(this).html(markedContent)
-  
+
       })
     });
 

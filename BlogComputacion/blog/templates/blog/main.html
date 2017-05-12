@@ -23,7 +23,7 @@
 
     <ul id="dropdown1" class="dropdown-content">
       <li><a href="#!">Mi perfil</a></li>
-      {% if perms.Post.add_Post %}
+      {% if perms.blog.add_post %}
         <li><a href="#!">Mis posts</a></li>
         <li><a href="{% url 'create' %}">Escribir Post</a></li>
       {% endif %}
@@ -33,7 +33,7 @@
 
     <ul id="dropdown2" class="dropdown-content">
       <li><a href="#!">Mi perfil</a></li>
-      {% if perms.Post.add_Post %}
+      {% if perms.blog.add_post %}
         <li><a href="#!">Mis posts</a></li>
         <li><a href="{% url 'create' %}">Escribir Post</a></li>
       {% endif %}
