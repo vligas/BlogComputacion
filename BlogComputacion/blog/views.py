@@ -33,8 +33,9 @@ def createPost(request):
 
         if form.is_valid():
             post = form.save(commit=False) # aqui era form.save..... deje el post = form.save() para poder hacer post.pk despues
-            post.author = request.User
-            return redirect('showOne', id=post.pk) # aqui era id, no pk
+            post.author = request.user
+            post.save()
+            return redirect('showOne', id=post.id) # aqui era id, no pk
 
     return render(request, 'blog/pages/crear_post.html', {'form':form}) # aqui modifique la direccion del template y lo meti dentro de la carpeta pages
 
@@ -43,7 +44,7 @@ def createPost(request):
 @permission_required('blog.can_Post', raise_exception=True)
 def updatePost(request, id):
     instance = get_object_or_404(Post, pk=id)
-    if instance.author == request.User :
+    if instance.author == request.user :
         form = FormPost(request.POST or None, request.FILES or None, instance = instance)
 
         if( request.method == "POST"):
