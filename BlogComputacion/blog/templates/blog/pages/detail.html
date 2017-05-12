@@ -5,7 +5,7 @@
 <h3>{{ post.title }}</h3>
 
 <p>{{ post.text }}</p>
-{% if perms.Post.add_Post %}
+{% if perms.Post.add_Post and post.user == user %}
   <a href="{% url 'update' post.id %}">Editar</a>
 {% endif %}
 {% endblock %}
