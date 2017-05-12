@@ -3,11 +3,12 @@ from django.contrib.auth.decorators import permission_required
 from django.utils.decorators import method_decorator
 from django.core.urlresolvers import reverse_lazy
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
 class Post(models.Model):
     title = models.CharField(max_length = 100)
     text = models.TextField()
-    # falta autor
+    author = models.ForeignKey(User, on_delete = models.CASCADE)
     updated_at = models.DateField(auto_now=True)
     created_at = models.DateField(auto_now_add=True) # para que se llene automaticamente al instanciar el objeto
     cont_vist = models.IntegerField(default=0)
