@@ -12,12 +12,37 @@
 
     <link rel="stylesheet" href="{% static 'blog/css/materialize.min.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/dracula.min.css">
+
     <style media="screen">
       nav.main-nav
       {
         margin-bottom:50px;
         position:relative;
       }
+
+      /*.hljs-line-numbers {
+      	text-align: right;
+      	border-right: 1px solid #ccc;
+      	color: #A3A49C;
+      	-webkit-touch-callout: none;
+      	-webkit-user-select: none;
+      	-khtml-user-select: none;
+      	-moz-user-select: none;
+      	-ms-user-select: none;
+      	user-select: none;
+      }
+
+      .hljs
+      {
+        padding:0 10px;
+        background:transparent;
+      }*/
+      /*pre
+      {
+        background-color: #23241F;
+      }*/
+
     </style>
 
 
@@ -84,6 +109,9 @@
     <script src="{% static 'blog/js/jquery-3.2.1.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'blog/js/materialize.min.js' %}" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+    <script src="{% static 'blog/js/highlightjs-line-numbers.js' %}" charset="utf-8"></script>
+
 
     {% block extraScripts %}{% endblock %}
 
@@ -101,11 +129,22 @@
       $(".content-markdown").each(function(){
           var content = $(this).text()
           console.log(content)
-          var markedContent = marked(content)
+          var markedContent = marked(content,{
+            highlight: function(code){
+              return hljs.highlightAuto(code).value;
+            }
+          });
           console.log(markedContent)
           $(this).html(markedContent)
 
+
       });
+      // $('code').each(function(i,block){
+      //   hljs.lineNumbersBlock(block);
+      // });
+      $('pre').each(function(){
+        $(this).addClass('hljs');
+      })
 
     });
 

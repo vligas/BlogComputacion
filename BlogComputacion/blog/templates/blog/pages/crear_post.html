@@ -41,6 +41,7 @@
           {% render_field form.text style='display:none;' %}
         </div>
         <br>
+        <br>
         <div class="input-field">
           <div class="file-field input-field">
             <div class="btn btn-small">
@@ -70,6 +71,8 @@
 
 {% block extraScripts %}
 <script src="{% static 'blog/js/editor.md-master/src/editormd.js' %}" charset="utf-8"></script>
+<script src="{% static 'blog/js/editor.md-master/languages/en.js' %}" charset="utf-8"></script>
+
 <script type="text/javascript">
     $(function() {
         var editor = editormd("editormd", {
