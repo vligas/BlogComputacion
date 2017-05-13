@@ -12,6 +12,6 @@ class FormPost(forms.ModelForm):
             'text': 'Contenido',
             'cover': 'Imagen de portada',
         }
-        widgets = {
-            'text': PagedownWidget
-        }
+        # widgets = {
+        #     'text': PagedownWidget
+        # }

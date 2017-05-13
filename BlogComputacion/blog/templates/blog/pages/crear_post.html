@@ -1,10 +1,11 @@
 {% extends 'blog/main2.html' %}
+{% load staticfiles %}
 {% load widget_tweaks %} <!-- Cargo las nuevas funcionalidades de la app que descarge -->
 
 {% block extraStyles %}
   {{form.media}}
 
-  <style>
+  <!--<style>
     .wmd-panel
     {
       margin:0px;
@@ -15,12 +16,14 @@
     {
       margin-left: 0px !important;
     }
-  </style>
+  </style>-->
+  <link rel="stylesheet" href="{% static 'blog/js/editor.md-master/css/editormd.css' %}">
 {% endblock %}
+
 
 {% block content %}
     <div class="row">
-      <form method="post" enctype="multipart/form-data" class="col s12 m8 offset-m2"> <!-- Aqui era enctype el problema -->
+      <form method="post" enctype="multipart/form-data" class="col s12"> <!-- Aqui era enctype el problema -->
         <div class="card">
           <br>
           <br>
@@ -34,7 +37,9 @@
           <label for="{{form.title.id_for_label}}" data-error="{% for error in form.title.errors %} {{error}} {% endfor %}">{{form.title.label}}</label>
         </div>
         <br>
-        {% render_field form.text %}
+        <div id="editormd">
+          {% render_field form.text style='display:none;' %}
+        </div>
         <br>
         <div class="input-field">
           <div class="file-field input-field">
@@ -58,5 +63,40 @@
 
   </div>
 </div>
+<div class="row">
 
+</div>
+{% endblock %}
+
+{% block extraScripts %}
+<script src="{% static 'blog/js/editor.md-master/src/editormd.js' %}" charset="utf-8"></script>
+<script type="text/javascript">
+    $(function() {
+        var editor = editormd("editormd", {
+            path : "{% static 'blog/js/editor.md-master/lib/' %}" ,
+            height           : 580,
+            tex              : true,
+            tocm             : true,
+            emoji            : true,
+            taskList         : true,
+            codeFold         : true,
+            searchReplace    : true,
+            htmlDecode       : "style,script,iframe",
+            flowChart        : true,
+            sequenceDiagram  : true,
+            onfullscreen     : function() {
+                this.editor.css("border-radius", 0).css("z-index", 120);
+            },
+            onfullscreenExit : function() {
+                this.editor.css({
+                    zIndex : 10,
+                    border : "none",
+                    "border-radius" : "5px"
+                });
+
+                this.resize();
+            }
+        });
+    });
+</script>
 {% endblock %}

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks', # agregue esta app para poder manejar mejor los formularios
-    'pagedown', # agregue para poder mostrar un editor de MarkDown
+    # 'pagedown', # agregue para poder mostrar un editor de MarkDown
 ]
 
 MIDDLEWARE = [
