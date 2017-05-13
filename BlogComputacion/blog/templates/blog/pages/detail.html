@@ -1,12 +1,13 @@
 {% extends 'blog/main2.html' %}
 
+
  {% block content %}
  <img src="{{ post.cover.url }}" alt="" class="responsive-img">
  <div>
    <small>Por {{post.author.username}}, publicado: {{post.created_at}}</small>
    <h3>{{ post.title }}</h3>
 
-   <p>{{ post.text }}</p>
+   <p class="content-markdown">{{ post.text }}</p>
  </div>
 {% if perms.Post.add_Post and post.author == user %}
   <a href="{% url 'update' post.id %}" class="btn blue white-text">Editar</a>

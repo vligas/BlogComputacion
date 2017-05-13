@@ -1,0 +1,430 @@
+html
+{
+  font-family: "Raleway";
+  color: #3f3f3f;
+}
+
+.tabs {
+overflow: hidden;
+}
+
+#logo-container
+{
+  padding-top: 10px;
+  width: 70px;
+  /*position:relative;*/
+}
+
+.main-nav
+{
+  height:100px !important;
+}
+.dropdown-navbar
+{
+  margin-top:17px;
+}
+
+.nav-ul a
+{
+  line-height: 100px;
+  vertical-align: middle !important;
+}
+
+.logo-text
+{
+  position:absolute;
+  top:45px;
+  left:-27px;
+  font-size: 20px;
+
+}
+
+.chip
+{
+  text-transform: uppercase;
+  border-radius:10px;
+}
+
+body
+{
+  background-color: #F9F9F9;
+}
+
+
+.brand-logo
+{
+  font-family: "Montserrat";
+}
+
+
+h1, h2, h3, h4, h5, h6, .card-title
+{
+  font-family: "Montserrat";
+  font-weight:700;
+}
+
+
+nav.main-nav
+{
+  position:absolute;
+  font-weight: bold;
+  /*z-index: 1;*/
+  box-shadow: None;
+}
+
+.main-banner
+{
+  width:100%;
+  height:50vh;
+  background: url('../img/background.jpg') top;
+  -webkit-background-size: cover;
+  background-size: cover;
+
+  position: relative;
+  z-index: -2;
+}
+.main-banner::after
+{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(33, 150, 244, 0.6);
+  /*background: #2196F3;*/
+}
+
+.banner-content
+{
+  padding-top:15vh;
+  color:white;
+  text-align: center;
+  position:relative;
+  z-index: 1;
+  /*width:50%;*/
+  /*margin:auto;*/
+}
+.banner-content h1
+{
+  font-weight:bolder;
+}
+.banner-content p
+{
+  font-weight: normal;
+}
+
+.categorias .chip
+{
+  background: inherit;
+  color:rgb(142, 142, 142);
+  border:1px solid rgb(228, 228, 228);
+  transition: all 0.3s ease;
+  font-weight: 400;
+}
+.categorias .chip.active, .chip:hover
+{
+  /*background: inherit !important;*/
+  color:white !important;
+  background: #2196F3 !important;
+}
+
+.chip
+{
+  transition: all 0.5s ease;
+}
+
+
+.categorias a
+{
+  margin-left: 7px;
+}
+
+.card-info
+{
+  overflow: hidden;
+}
+
+
+.raised
+{
+  margin-top: -70px;
+  margin-bottom:30px;
+}
+
+.cards-container {
+  column-break-inside: avoid;
+}
+
+.cards-container .card {
+  display: inline-block;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .cards-container {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
+}
+@media only screen and (min-width: 601px) {
+  .cards-container {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+@media only screen and (min-width: 993px) {
+  .cards-container {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+.text-center {
+  text-align: center;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+  color: #2196F3;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #2196F3;
+  box-shadow: 0 1px 0 0 #2196F3;
+}
+/* valid color */
+.input-field input[type=text].valid {
+  border-bottom: 1px solid lightgreen;
+  box-shadow: 0 1px 0 0 lightgreen;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+  border-bottom: 1px solid tomato;
+  box-shadow: 0 1px 0 0 tomato;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #2196F3;
+}
+
+
+
+
+.input-field input[type=password]:focus + label {
+  color: #2196F3;
+}
+/* label underline focus color */
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid #2196F3;
+  box-shadow: 0 1px 0 0 #2196F3;
+}
+/* valid color */
+.input-field input[type=password].valid {
+  border-bottom: 1px solid lightgreen;
+  box-shadow: 0 1px 0 0 lightgreen;
+}
+/* invalid color */
+.input-field input[type=password].invalid {
+  border-bottom: 1px solid tomato;
+  box-shadow: 0 1px 0 0 tomato;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #2196F3;
+}
+
+.materialize-textarea:focus + label {
+  color: #2196F3 !important;
+}
+/* label underline focus color */
+.materialize-textarea:focus {
+  border-bottom: 1px solid #2196F3 !important;
+  box-shadow: 0 1px 0 0 #2196F3 !important;
+}
+/* valid color */
+.materialize-textarea.valid {
+  border-bottom: 1px solid lightgreen !important;
+  box-shadow: 0 1px 0 0 lightgreen !important;
+}
+/* invalid color */
+.materialize-textarea.invalid {
+  border-bottom: 1px solid tomato !important;
+  box-shadow: 0 1px 0 0 tomato !important;
+}
+/* icon prefix focus color */
+.prefix.active {
+  color: #2196F3;
+}
+
+
+
+.sidebar
+{
+  padding-left: 20px;
+}
+
+.section-title
+{
+  font-size: 20px;
+}
+
+.image-cropper {
+    width: 90px;
+    height: 90px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-top:10px;
+}
+
+.image-post
+{
+  position:relative;
+}
+
+.vistas{
+  border-radius: 35px;
+  position:absolute;
+  padding:5px;
+  top:-5px;
+  left:27px;
+}
+
+img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+}
+
+
+.btn-small {
+    height: 27px;
+    line-height: 24px;
+    padding: 0 1rem;
+}
+
+
+.categorias-populares .chip
+{
+  font-size:15px;
+  margin:10px;
+}
+
+
+.card-category
+{
+  padding:10px;
+}
+
+.card-category .chip
+{
+  background: white;
+  color:black;
+}
+
+.vertical-center
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+a.article-link
+{
+  color:inherit;
+  transition: all 0.5s ease;
+}
+
+a.article-link:hover
+{
+  color: #2196F3;
+}
+
+.nuevo
+{
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  letter-spacing: 2px;
+
+}
+
+.nuevo::before,
+.nuevo::after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  display: block;
+  border: 5px solid #2980b9;
+  border-top-color: transparent;
+  border-left-color: transparent;
+
+}
+
+.nuevo span {
+  position: absolute;
+  display: block;
+  width: 225px;
+  padding: 15px 0;
+  background-color: #2196F3;
+  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+  color: #fff;
+  font: 700 18px/1 'Lato', sans-serif;
+  text-shadow: 0 1px 1px rgba(0,0,0,.2);
+  text-transform: uppercase;
+  text-align: center;
+  right: -25px;
+  top: 30px;
+  transform: rotate(-45deg);
+
+}
+.nuevo::before {
+  top: 0;
+  right: 0;
+}
+.nuevo::after {
+  bottom: 0;
+  left: 0;
+}
+
+
+
+/*.nuevo::before
+{
+  content:"";
+  position:absolute;
+  background: black;
+  top:30px;
+  left:-20px;
+  padding:20px;
+  width:50%;
+  height:50%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  color:white;
+  z-index:-2;
+  transform: rotate(45deg);
+}*/
+
+
+.card
+{
+  overflow:visible !important;
+}
+
+
+
+.img-post-all
+{
+  padding-left:0px !important;
+}

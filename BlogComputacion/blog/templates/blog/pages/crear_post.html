@@ -1,5 +1,23 @@
 {% extends 'blog/main2.html' %}
 {% load widget_tweaks %} <!-- Cargo las nuevas funcionalidades de la app que descarge -->
+
+{% block extraStyles %}
+  {{form.media}}
+
+  <style>
+    .wmd-panel
+    {
+      margin:0px;
+      width:100%;
+    }
+
+    .wmd-wrapper div
+    {
+      margin-left: 0px !important;
+    }
+  </style>
+{% endblock %}
+
 {% block content %}
     <div class="row">
       <form method="post" enctype="multipart/form-data" class="col s12 m8 offset-m2"> <!-- Aqui era enctype el problema -->
@@ -16,10 +34,7 @@
           <label for="{{form.title.id_for_label}}" data-error="{% for error in form.title.errors %} {{error}} {% endfor %}">{{form.title.label}}</label>
         </div>
         <br>
-        <div class="input-field">
-          {% render_field form.text class+="materialize-textarea validate"%}
-          <label for="{{form.text.id_for_label}}" data-error="{% for error in form.text.errors %} {{error}} {% endfor %}">{{form.text.label}}</label>
-        </div>
+        {% render_field form.text %}
         <br>
         <div class="input-field">
           <div class="file-field input-field">

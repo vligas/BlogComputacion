@@ -83,6 +83,7 @@
 
     <script src="{% static 'blog/js/jquery-3.2.1.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'blog/js/materialize.min.js' %}" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
 
     {% block extraScripts %}{% endblock %}
 
@@ -97,14 +98,15 @@
 
 
 
-      // $(".content-markdown").each(function()){
-      //     var content = $(this).text()
-      //     console.log(content)
-      //     var markedContent = marked(content)
-      //     console.log(msrkedContent)
-      //     $(this).html(markedContent)
-      //
-      // })
+      $(".content-markdown").each(function(){
+          var content = $(this).text()
+          console.log(content)
+          var markedContent = marked(content)
+          console.log(markedContent)
+          $(this).html(markedContent)
+
+      });
+
     });
 
     </script>
