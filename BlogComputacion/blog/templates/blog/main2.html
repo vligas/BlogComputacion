@@ -12,7 +12,8 @@
 
     <link rel="stylesheet" href="{% static 'blog/css/materialize.min.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/dracula.min.css">
+    <link rel="stylesheet" href="{% static 'blog/css/prism.css' %}">
+    {# <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/monokai.min.css">#}
 
     <style media="screen">
       nav.main-nav
@@ -92,9 +93,10 @@
 
     <script src="{% static 'blog/js/jquery-3.2.1.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'blog/js/materialize.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'blog/js/prism.js' %}" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
-    <script src="{% static 'blog/js/highlightjs-line-numbers.js' %}" charset="utf-8"></script>
+    {# <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>#}
+    {# <script src="{% static 'blog/js/highlightjs-line-numbers.js' %}" charset="utf-8"></script>#}
 
 
     {% block extraScripts %}{% endblock %}
@@ -112,22 +114,23 @@
 
       $(".content-markdown").each(function(){
           var content = $(this).text()
-          console.log(content)
-          var markedContent = marked(content,{
-            highlight: function(code){
-              return hljs.highlightAuto(code).value;
-            }
-          });
-          console.log(markedContent)
+          // console.log(content)
+          var markedContent = marked(content);
+          // console.log(markedContent)
           $(this).html(markedContent)
 
       });
+
+      console.log("sali");
+      Prism.highlightAll();
+      console.log("hice el highlight");
+
       // $('code').each(function(i,block){
       //   hljs.lineNumbersBlock(block);
       // });
-      $('pre').each(function(){
-        $(this).addClass('hljs');
-      });
+      // $('pre').each(function(){
+      //   $(this).addClass('hljs');
+      // });
 
       // $('select').each(function(){
       //   $(this).addClass('browser-default');

@@ -428,3 +428,35 @@ a.article-link:hover
 {
   padding-left:0px !important;
 }
+
+.post-header
+{
+  padding:24px 24px 0px 24px;
+}
+
+.post-body
+{
+  font-size:18px;
+  line-height: 29.7px;
+}
+
+.post-body > *
+{
+  padding: 0px 24px;
+}
+
+pre
+{
+  /*padding:24px !important;*/
+  border-top: 10px solid #2196F3;
+  border-bottom:10px solid #2196F3;
+}
+
+code
+{
+  background: #f3f3f3;
+  border-radius:3px;
+  padding:3px;
+  color:#2196F3;
+  font-family: 'Space mono';
+}

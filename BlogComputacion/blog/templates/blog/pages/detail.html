@@ -1,26 +1,168 @@
 {% extends 'blog/main2.html' %}
+{% load staticfiles %}
 
 {%block title%} {{post.title}} {%endblock%}
 
 {% block content %}
  <div class="row">
-   <div class="col s12">
+   <div class="col s12 l8">
      <div class="card">
        <div class="card-image">
          <img src="{{ post.cover.url }}" alt="" class="responsive-img">
        </div>
-       <div class="card-content">
-         <p clsas="grey-text">Por {{post.author.username}}, publicado: {{post.created_at}}</p>
-         <h2>{{ post.title }}</h2>
+       <div>
+         <div class="post-header">
+           <p clsas="grey-text">Por {{post.author.username}}, publicado: {{post.created_at}}</p>
+           <h2>{{ post.title }}</h2>
+         </div>
 
          <div class="content-markdown post-body">{{ post.text }}</div>
          <br>
          <br>
          {% if perms.Post.add_Post and post.author == user %}
-         <a href="{% url 'update' post.id %}" class="btn blue white-text">Editar</a>
+           <div class="post-body">
+             <p>
+               <a href="{% url 'update' post.id %}" class="btn blue white-text">Editar</a>
+             </p>
+             <br>
+           </div>
          {% endif %}
        </div>
      </div>
    </div>
+   <div class="col s12 l4">
+     <div class="sidebar">
+       <div class="popular-posts">
+         <h3 class="section-title">Posts Populares</h3>
+
+
+         <div class="section">
+           <div class="row popular-post">
+             <div class="col s3 image-post">
+               <div class="image-cropper z-depth-3">
+                 <img src="{% static 'blog/img/atom.jpg' %}" alt="" >
+               </div>
+               <div class="vistas blue center white-text z-depth-3">
+                 <i class="fa fa-eye"></i> 2.5k
+               </div>
+             </div>
+             <div class="col s9">
+               <div class="tags">
+                 <div class="chip z-depth-1">Herramientas</div>
+                 <div class="chip z-depth-1">Atom</div>
+               </div>
+               <a href="#!" class="article-link"><h5>Mejores paquetes de Atom</h5></a>
+             </div>
+           </div>
+           <div class="divider"></div>
+         </div>
+
+
+         <div class="section">
+           <div class="row popular-post">
+             <div class="col s3 image-post">
+               <div class="image-cropper z-depth-3">
+                 <img src="{% static 'blog/img/nodejs.jpg' %}" alt="" >
+               </div>
+               <div class="vistas blue center white-text z-depth-3">
+                 <i class="fa fa-eye"></i> 2.3k
+               </div>
+             </div>
+             <div class="col s9">
+               <div class="tags">
+                 <div class="chip z-depth-1">Nodejs</div>
+                 <div class="chip z-depth-1">Backend</div>
+               </div>
+               <a href="#!" class="article-link"><h5>Implementar una API basica con Nodejs</h5></a>
+             </div>
+           </div>
+           <div class="divider"></div>
+         </div>
+
+
+
+         <div class="section">
+           <div class="row popular-post">
+             <div class="col s3 image-post">
+               <div class="image-cropper z-depth-3">
+                 <img src="{% static 'blog/img/laravel.png' %}" alt="" >
+               </div>
+               <div class="vistas blue center white-text z-depth-3">
+                 <i class="fa fa-eye"></i> 1.5k
+               </div>
+
+             </div>
+             <div class="col s9">
+               <div class="tags">
+                 <div class="chip z-depth-1">Laravel</div>
+                 <div class="chip z-depth-1">Php</div>
+               </div>
+               <a href="#!" class="article-link"><h5>Introduccion a Laravel </h5></a>
+             </div>
+           </div>
+           <div class="divider"></div>
+         </div>
+
+
+
+       <br>
+       </div>
+       <div class="motivacion card blue white-text">
+         <div class="card-content">
+           <h3 class="text-center">
+             Motivacion <i class="fa fa-trophy" aria-hidden="true"></i>
+           </h3>
+           <p>
+             Esta pagina surgio como un proyecto para ayudar en la universidad a los estudiantes de los primeros semestres a tener un poco de contacto con la carrera a traves de pequeños tutoriales o tips de diversos temas, principalmente de los que podiamos aportar algo, como lo son Desarrollo web, lenguajes de programacion como C, C++, python, etc.
+           </p>
+           <br>
+           <p>
+             Ya que este fue un proyecto que desarrollamos estando en el 4to (cuarto) semestre, es muy probable que tenga cosas mejorables y algunos errores, estamos abiertos a sugerencias o criticas constructivas, haznos saber tu opinion. <i class="fa fa-smile-o" aria-hidden="true"></i>
+           </p>
+           <br>
+           <span class="card-title activator grey-text text-darken-3">Escribenos <span class="btn-floating right grey darken-3"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+
+         </div>
+         <div class="card-reveal black-text">
+           <span class="card-title grey-text text-darken-4">Escribenos <i class="fa fa-pencil right" aria-hidden="true"></i></span>
+           <form class="col s12" action = "{% url 'enviarSugerencia' %}" method="POST">
+             {% csrf_token %}
+             <div class="row">
+               <div class="input-field col s12">
+                 <textarea id="mensaje" name="mensaje" class="materialize-textarea"></textarea>
+                 <label for="mensaje">Sugerencia</label>
+                 <button type="submit" name="button" class="btn blue">enviar</button>
+               </div>
+             </div>
+           </form>
+         </div>
+       </div>
+       <br>
+       <div class="categorias-populares">
+         <h3 class="section-title">Categorias Populares <i class="fa fa-tags" aria-hidden="true"></i></h3>
+
+         <div class="chip z-depth-1">IA</div>
+         <div class="chip z-depth-1">Python</div>
+         <div class="chip z-depth-1">Avanzado</div>
+         <div class="chip z-depth-1">Framework</div>
+         <div class="chip z-depth-1">Django</div>
+         <div class="chip z-depth-1">Teoria</div>
+         <div class="chip z-depth-1">C</div>
+         <div class="chip z-depth-1">Java</div>
+         <div class="chip z-depth-1">Javascript</div>
+         <div class="chip z-depth-1">Laravel</div>
+         <div class="chip z-depth-1">Php</div>
+         <div class="chip z-depth-1">Atom</div>
+         <div class="chip z-depth-1">Sublime</div>
+         <div class="chip z-depth-1">Servidores</div>
+         <div class="chip z-depth-1">DB</div>
+         <div class="chip z-depth-1">Nodejs</div>
+         <div class="chip z-depth-1">Html</div>
+         <div class="chip z-depth-1">React</div>
+
+       </div>
+     </div>
+   </div>
+
  </div>
 {% endblock %}
