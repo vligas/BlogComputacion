@@ -6,16 +6,22 @@
 {% block content %}
  <div class="row">
    <div class="col s12 l8">
-     <div class="card">
+     <div class="card z-depth-3">
        <div class="card-image">
          <img src="{{ post.cover.url }}" alt="" class="responsive-img">
        </div>
        <div>
-         <div class="post-header">
-           <p clsas="grey-text">Por {{post.author.username}}, publicado: {{post.created_at}}</p>
+         <div class="post-header center">
+           <p class="grey-text card-info">
+             <span>Por {{post.author.username}}</span>
+             <span>publicado: {{post.created_at}}</span>
+             <span><i class="fa fa-eye"></i> 1.5k</span>
+             <span><i class="fa fa-comment"></i> 50</span>
+           </p>
            <h2>{{ post.title }}</h2>
+           <div class="divider"></div>
          </div>
-
+          <br>
          <div class="content-markdown post-body">{{ post.text }}</div>
          <br>
          <br>

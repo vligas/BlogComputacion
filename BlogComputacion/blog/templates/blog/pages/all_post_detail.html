@@ -1,45 +1,55 @@
 {% extends 'blog/main2.html' %}
+
+{% block title %} Todos los posts {% endblock %}
+
 {% block content %}
 
 <!-- <h1 class="center">Todos los posts: </h1> -->
 
   <div class="row">
-    {% for entrada in object_list %}
-  <div class="row">
-    <div class="col s12">
-      <div class="card">
-        <div class="card-content">
-          <div class="col s12 m5 img-post-all">
+    <div class="col s12 cards-container-all">
+      {% for entrada in object_list %}
+      {# <div class="col s12">#}
+        <div class="card z-depth-3">
+          <div class="card-image">
+
             <img src="{{entrada.cover.url}}" alt="" class="responsive-img">
           </div>
-          <h4>{{entrada.title}}</h4>
-          <div class="divider"></div>
-          <p class="card-info grey-text">
-            <small>
-              <span class="left">Por {{entrada.author.username}}. posted: {{entrada.created_at}}  <i class="fa fa-eye"></i> 1.5k</span>
-            </small>
-          </p>
-          <div class="section">
-            <p class="content-markdown">{{entrada.text|truncatechars:500}}</p>
-          </div>
-          <div class="clearfix"></div>
-          <div class="center">
-            <a href="{{entrada.get_absolute_url}}" class="btn blue">Leer</a>
-          </div>
+          <div class="card-content">
+            <!-- <div class="col s12 m5 img-post-all">
+            </div> -->
+            <h5 class="card-title-all"><a href="{{entrada.get_absolute_url}}" class="article-link">{{entrada.title}}</a></h5>
+            <div class="divider"></div>
+            <p class="card-info grey-text">
+              <small>
+                <span>Por {{entrada.author.username}}.</span>
+                <span>publicado: {{entrada.created_at}}</span>
+                <span><i class="fa fa-eye"></i> 1.5k</span>
+                <span><i class="fa fa-comment"></i> 50</span>
+              </small>
+            </p>
+            <br>
+            <!-- <div class="section">
+              <p class="content-markdown">{{entrada.text|truncatechars:500}}</p>
+            </div> -->
+            <div class="clearfix"></div>
+            <div class="center">
+              <a href="{{entrada.get_absolute_url}}" class="btn blue">Leer</a>
+            </div>
           </div>
 
-          <div class="card-category grey darken-3 center">
+          <div class="card-category grey lighten-2 center">
 
-            <div class="chip z-depth-1">Django</div>
-            <div class="chip z-depth-1">Base de datos</div>
-            <div class="chip z-depth-1">Backend</div>
-            <div class="chip z-depth-1">Medio</div>
+            <div class="chip">Django</div>
+            <div class="chip">Base de datos</div>
+            <div class="chip">Backend</div>
+            <div class="chip">Medio</div>
 
           </div>
-        </div>
-      </div>
+          </div>
+        {# </div>#}
+      {% endfor  %}
     </div>
-  {% endfor  %}
   </div>
   <div class="row center">
 

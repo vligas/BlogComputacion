@@ -1,6 +1,6 @@
 html
 {
-  font-family: "Raleway";
+  font-family: "Droid Sans";
   color: #3f3f3f;
 }
 
@@ -53,14 +53,14 @@ body
 
 .brand-logo
 {
-  font-family: "Montserrat";
+  font-family: "Raleway";
 }
 
 
 h1, h2, h3, h4, h5, h6, .card-title
 {
-  font-family: "Montserrat";
-  font-weight:700;
+  font-family: "Raleway";
+  font-weight: bold;
 }
 
 
@@ -144,6 +144,12 @@ nav.main-nav
 .card-info
 {
   overflow: hidden;
+  text-align: center;
+}
+
+.card-info span
+{
+  margin-left:10px;
 }
 
 
@@ -153,11 +159,18 @@ nav.main-nav
   margin-bottom:30px;
 }
 
-.cards-container {
-  column-break-inside: avoid;
+.card-title-all
+{
+  margin-top:0px;
+  text-align: center;
 }
 
-.cards-container .card {
+.cards-container, .cards-container-all {
+  break-inside: avoid;
+}
+
+
+.cards-container .card, .cards-container-all .card{
   display: inline-block;
   overflow: hidden;
 }
@@ -168,6 +181,13 @@ nav.main-nav
     -moz-column-count: 1;
     column-count: 1;
   }
+  .cards-container-all
+  {
+    -webkit-column-count: 1;
+    -moz-column-count:1;
+    column-count:1;
+  }
+
 }
 @media only screen and (min-width: 601px) {
   .cards-container {
@@ -175,12 +195,25 @@ nav.main-nav
     -moz-column-count: 2;
     column-count: 2;
   }
+  .cards-container-all
+  {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+
 }
 @media only screen and (min-width: 993px) {
   .cards-container {
     -webkit-column-count: 2;
     -moz-column-count: 2;
     column-count: 2;
+  }
+  .cards-container-all
+  {
+    -webkit-column-count:3;
+    -moz-column-count:3;
+    column-count: 3;
   }
 }
 .text-center {
@@ -322,8 +355,8 @@ img {
 
 .card-category .chip
 {
-  background: white;
-  color:black;
+  background: #e0e0e0;
+  color:#757575;
 }
 
 .vertical-center
@@ -448,8 +481,8 @@ a.article-link:hover
 pre
 {
   /*padding:24px !important;*/
-  border-top: 10px solid #2196F3;
-  border-bottom:10px solid #2196F3;
+  border-top: 5px solid #2196F3;
+  border-bottom:5px solid #2196F3;
 }
 
 code
@@ -458,5 +491,5 @@ code
   border-radius:3px;
   padding:3px;
   color:#2196F3;
-  font-family: 'Nova Mono'!important;
+  font-family: 'Share Tech Mono'!important;
 }

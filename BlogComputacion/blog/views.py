@@ -14,7 +14,7 @@ def index(request):
 class showAll(ListView):
     template_name = 'blog/pages/all_post_detail.html'
     model = Post
-    paginate_by = 5
+    paginate_by = 10
     ordering = ['-id'] # para que ordene de menor a mayor (-) tomando en cuenta la fecha de creacion (created_at)
 
 def showOne(request, id):
