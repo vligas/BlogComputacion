@@ -24,3 +24,12 @@ class Post(models.Model):
 class ImgOfPost(models.Model):
     img = models.ImageField()
     Post = models.ForeignKey(Post, on_delete = models.CASCADE)
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_date = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return self.text

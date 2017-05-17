@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, Http404
 from django.core.mail import send_mail
-from .forms import FormPost
+from .forms import FormPost, CommentForm
 from django.shortcuts import redirect, get_object_or_404
 from .models import Post
 from django.views.generic import ListView
@@ -19,7 +19,11 @@ class showAll(ListView):
 
 def showOne(request, id):
     post = get_object_or_404(Post, pk = id)
-    return render(request, 'blog/pages/detail.html', {'post':post})
+    context = {
+        'post':post,
+        'form':CommentForm
+    }
+    return render(request, 'blog/pages/detail.html', context)
 
 def contact(request):
     return HttpResponse('contact form')
@@ -75,3 +79,19 @@ def enviarSugerencia(request):
         return  redirect('/')
     else:
         return Http404("Page not found")
+
+@login_required
+def addComment(request, id):
+    post = get_object_or_404(Post, pk=id)
+    form_comment = CommentForm()
+
+    if request.method == 'POST':
+        form_comment = CommentForm(request.POST)
+
+        if form_comment.is_valid():
+            comment = form_comment.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+
+    return redirect('showOne', id=post.id)

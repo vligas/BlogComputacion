@@ -1,4 +1,4 @@
-from .models import Post
+from .models import Post, Comment
 from django import forms
 #from pagedown.widgets import PagedownWidget
 
@@ -15,3 +15,11 @@ class FormPost(forms.ModelForm):
         # widgets = {
         #     'text': PagedownWidget
         # }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['text']
+        labels = {
+            'text':'Escribe aqui tu comentario'
+        }

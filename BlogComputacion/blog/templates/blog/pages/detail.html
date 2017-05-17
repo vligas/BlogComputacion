@@ -35,6 +35,23 @@
          {% endif %}
        </div>
      </div>
+
+     <form method="post" class="post-form" action="{% url 'addComment' post.pk %}">
+       {% csrf_token %}
+       {{ form.as_p }}
+       <button type="submit" class="save btn btn-default" >Comentar</button>
+     </form>
+
+     <hr>
+      {% for comment in post.comments.all %}
+          <div class="comment">
+              <div class="date">{{ comment.created_date }}</div>
+              <strong>{{ comment.author }}</strong>
+              <p>{{ comment.text|linebreaks }}</p>
+          </div>
+      {% empty %}
+          <p>Sé el primero en comentar</p>
+      {% endfor %}
    </div>
    <div class="col s12 l4">
      <div class="sidebar">
