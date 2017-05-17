@@ -1,6 +1,6 @@
 from .models import Post
 from django import forms
-from pagedown.widgets import PagedownWidget
+#from pagedown.widgets import PagedownWidget
 
 class FormPost(forms.ModelForm):
 
