@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404
 from django.core.mail import send_mail
 from .forms import FormPost, CommentForm
 from django.shortcuts import redirect, get_object_or_404
-from .models import Post
+from .models import Post, Comment
 from django.views.generic import ListView
 from django.contrib.auth.decorators import permission_required, login_required
 
@@ -95,3 +95,10 @@ def addComment(request, id):
             comment.save()
 
     return redirect('showOne', id=post.id)
+
+@login_required
+def removeComment(request, id):
+    comment = get_object_or_404(Comment, pk=id)
+    aux = comment.post.id
+    comment.delete()
+    return redirect('showOne', id=aux)
