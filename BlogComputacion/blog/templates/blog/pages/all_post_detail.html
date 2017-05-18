@@ -25,7 +25,7 @@
                 <span>Por {{entrada.author.username}}.</span>
                 <span>publicado: {{entrada.created_at}}</span>
                 <span><i class="fa fa-eye"></i> 1.5k</span>
-                <span><i class="fa fa-comment"></i> 50</span>
+                <span><i class="fa fa-comment"></i> {{ entrada.comments.count }}</span>
               </small>
             </p>
             <br>
