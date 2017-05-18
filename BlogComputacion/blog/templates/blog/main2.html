@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Blog | {% block title %}{% endblock %}</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Raleway|Nunito|Droid+Sans|Share+Tech+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Nunito|Droid+Sans|Share+Tech+Mono" rel="stylesheet">
     <script src="https://use.fontawesome.com/3aa6c402c1.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{% static 'blog/css/materialize.min.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'blog/css/prism-onedark.css' %}">
-    {# <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/styles/monokai.min.css">#}
 
     <style media="screen">
       nav.main-nav
@@ -26,7 +25,6 @@
       {
         display:block;
       }
-
 
     </style>
 
@@ -87,16 +85,23 @@
 
     <div class="container">
       {% block content %}
-        {# contenido de la pagina #}
       {% endblock %}
     </div>
+
+    <footer class="page-footer grey darken-3">
+      <div class="footer-copyright grey darken-4">
+        <div class="container center">
+          P entonces Q &copy; 2017
+        </div>
+      </div>
+    </footer>
+
+
 
     <script src="{% static 'blog/js/jquery-3.2.1.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'blog/js/materialize.min.js' %}" charset="utf-8"></script>
     <script src="{% static 'blog/js/prism.js' %}" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
-    {# <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>#}
-    {# <script src="{% static 'blog/js/highlightjs-line-numbers.js' %}" charset="utf-8"></script>#}
 
 
     {% block extraScripts %}{% endblock %}
@@ -108,15 +113,12 @@
       $(".button-collapse").sideNav();
       $('.dropdown-button').dropdown();
       $('.modal').modal();
-      // $('select').material_select();
 
 
 
       $(".content-markdown").each(function(){
           var content = $(this).text()
-          // console.log(content)
           var markedContent = marked(content);
-          // console.log(markedContent)
           $(this).html(markedContent)
 
       });
@@ -125,16 +127,6 @@
       Prism.highlightAll();
       console.log("hice el highlight");
 
-      // $('code').each(function(i,block){
-      //   hljs.lineNumbersBlock(block);
-      // });
-      // $('pre').each(function(){
-      //   $(this).addClass('hljs');
-      // });
-
-      // $('select').each(function(){
-      //   $(this).addClass('browser-default');
-      // });
 
 
 

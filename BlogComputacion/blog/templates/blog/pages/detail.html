@@ -1,57 +1,93 @@
 {% extends 'blog/main2.html' %}
 {% load staticfiles %}
+{% load widget_tweaks %} <!-- Cargo las nuevas funcionalidades de la app que descarge -->
+{# {% load humanize %}#}
+
 
 {%block title%} {{post.title}} {%endblock%}
 
 {% block content %}
  <div class="row">
    <div class="col s12 l8">
-     <div class="card z-depth-3">
-       <div class="card-image">
-         <img src="{{ post.cover.url }}" alt="" class="responsive-img">
-       </div>
-       <div>
-         <div class="post-header center">
-           <p class="grey-text card-info">
-             <span>Por {{post.author.username}}</span>
-             <span>publicado: {{post.created_at}}</span>
-             <span><i class="fa fa-eye"></i> 1.5k</span>
-             <span><i class="fa fa-comment"></i> 50</span>
-           </p>
-           <h2>{{ post.title }}</h2>
-           <div class="divider"></div>
+     <div class="row">
+       <div class="card z-depth-3">
+         <div class="card-image">
+           <img src="{{ post.cover.url }}" alt="" class="responsive-img">
          </div>
-          <br>
-         <div class="content-markdown post-body">{{ post.text }}</div>
-         <br>
-         <br>
-         {% if perms.Post.add_Post and post.author == user %}
+         <div>
+           <div class="post-header center">
+             <p class="grey-text card-info">
+               <span>Por {{post.author.username}}</span>
+               <span>publicado: {{post.created_at}}</span>
+               <span><i class="fa fa-eye"></i> 1.5k</span>
+               <span><i class="fa fa-comment"></i> 50</span>
+             </p>
+             <h2>{{ post.title }}</h2>
+             <div class="divider"></div>
+           </div>
+           <br>
+           <div class="content-markdown post-body">{{ post.text }}</div>
+           <br>
+           <br>
+           {% if perms.Post.add_Post and post.author == user %}
            <div class="post-body">
              <p>
                <a href="{% url 'update' post.id %}" class="btn blue white-text">Editar</a>
              </p>
              <br>
            </div>
-         {% endif %}
+           <div class="card-category grey lighten-2 center">
+             <div class="chip">IA</div>
+             <div class="chip">Python</div>
+             <div class="chip">Avanzado</div>
+           </div>
+           {% endif %}
+         </div>
+       </div>
+       <div class="col s12">
+         <div class="card">
+           <div class="card-content">
+             <div class="section">
+               <form method="post" action="{% url 'addComment' post.pk %}">
+                 {% csrf_token %}
+                 {% with WIDGET_ERROR_CLASS='invalid' %}
+
+                 <div class="input-field">
+                   {% render_field form.text class+="validate materialize-textarea"%}
+                   <label for="{{ form.text.id_for_label}}">{{form.text.label}}</label>
+                 </div>
+
+                 {% endwith %}
+                 <button type="submit" class="btn blue" >Comentar</button>
+               </form>
+             </div>
+
+
+             <div class="section">
+               <div class="comments">
+                 {% for comment in post.comments.all %}
+                 <div class="section">
+                   <div class="comment">
+                     <div>
+                       <span class="chip user-chip blue white-text">
+                         <img src="http://cyndidale.com/wp-content/uploads/2015/11/user-placeholder-circle.png" alt="">
+                         {{ comment.author }}
+                       </span>
+                       <small>{{ comment.created_date|timesince }} ago</small>
+                     </div>
+                     <div class="comment-text grey lighten-2 ">{{ comment.text|linebreaks }}</div>
+                   </div>
+                 </div>
+                 {% empty %}
+                 <br>
+                 <p class="center grey-text"><b>Sé el primero en comentar <i class="fa fa-smile-o" aria-hidden="true"></i></b></p>
+                 {% endfor %}
+               </div>
+             </div>
+           </div>
+         </div>
        </div>
      </div>
-
-     <form method="post" class="post-form" action="{% url 'addComment' post.pk %}">
-       {% csrf_token %}
-       {{ form.as_p }}
-       <button type="submit" class="save btn btn-default" >Comentar</button>
-     </form>
-
-     <hr>
-      {% for comment in post.comments.all %}
-          <div class="comment">
-              <div class="date">{{ comment.created_date }}</div>
-              <strong>{{ comment.author }}</strong>
-              <p>{{ comment.text|linebreaks }}</p>
-          </div>
-      {% empty %}
-          <p>Sé el primero en comentar</p>
-      {% endfor %}
    </div>
    <div class="col s12 l4">
      <div class="sidebar">
