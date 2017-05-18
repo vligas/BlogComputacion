@@ -50,7 +50,7 @@
           <li><a href="{% url 'registrar' %}"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign Up</a></li>
           <li><a href="{% url 'login' %}"><i class="fa fa-sign-in" aria-hidden="true"></i> Log In</a></li>
           {% else %}
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Mi cuenta <i class="material-icons right dropdown-navbar">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">{{user.username}} <i class="material-icons right dropdown-navbar">arrow_drop_down</i></a></li>
           {% endif %}
         </ul>
         <ul id="nav-mobile" class="side-nav nav-ul">
@@ -60,7 +60,7 @@
           <li><a href="{% url 'registrar' %}">Sign Up</a></li>
           <li><a href="{% url 'login' %}">Log In</a></li>
           {% else %}
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Mi cuenta<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a class="dropdown-button" href="#!" data-activates="dropdown2">{{user.username}}<i class="material-icons right">arrow_drop_down</i></a></li>
           {% endif %}
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>

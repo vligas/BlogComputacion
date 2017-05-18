@@ -29,7 +29,7 @@
            <div class="content-markdown post-body">{{ post.text }}</div>
            <br>
            <br>
-           {% if perms.Post.add_Post and post.author == user %}
+           {% if perms.blog.add_post and post.author == user %}
            <div class="post-body">
              <p>
                <a href="{% url 'update' post.id %}" class="btn blue white-text">Editar</a>
@@ -74,7 +74,7 @@
                          {{ comment.author }}
                        </span>
                        <small>{{ comment.created_date|timesince }} ago</small>
-                       {% if perms.Post.add_Post or comment.author == user %}
+                       {% if perms.blog.add_post or comment.author == user %}
                        <a class="red-text"href="{% url 'removeComment' comment.id %}"><i class="fa fa-trash-o fa-lg"></i></a>
                        {% endif %}
                      </div>
