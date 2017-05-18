@@ -74,17 +74,12 @@
                          {{ comment.author }}
                        </span>
                        <small>{{ comment.created_date|timesince }} ago</small>
+                       {% if perms.Post.add_Post or comment.author == user %}
+                       <a class="red-text"href="{% url 'removeComment' comment.id %}"><i class="fa fa-trash-o fa-lg"></i></a>
+                       {% endif %}
                      </div>
                      <div class="comment-text grey lighten-2 ">{{ comment.text|linebreaks }}</div>
                    </div>
-                   {% if perms.Post.add_Post or comment.author == user %}
-                   <div class="post-body">
-                     <p>
-                       <a class="btn btn-default" href="{% url 'removeComment' comment.id %}">Eliminar</a>
-                     </p>
-                     <br>
-                   </div>
-                   {% endif %}
                  </div>
                  {% empty %}
                  <br>
