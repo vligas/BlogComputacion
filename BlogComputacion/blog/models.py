@@ -5,6 +5,9 @@ from django.core.urlresolvers import reverse_lazy
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 
+class Category(models.Model):
+    name = models.CharField(max_length = 100)
+
 class Post(models.Model):
     title = models.CharField(max_length = 100)
     text = models.TextField()
@@ -13,6 +16,7 @@ class Post(models.Model):
     created_at = models.DateField(auto_now_add=True) # para que se llene automaticamente al instanciar el objeto
     cont_vist = models.IntegerField(default=0)
     cover = models.ImageField()
+    category = models.ManyToManyField(Category)
 
     def get_absolute_url(self):
         return reverse("showOne", kwargs={"id":self.id})   # blog:showOne es invalido ya que no tenemos un "namespace" llamado blog
