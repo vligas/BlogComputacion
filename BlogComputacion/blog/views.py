@@ -19,6 +19,11 @@ class showAll(ListView):
 
 def showOne(request, id):
     post = get_object_or_404(Post, pk = id)
+    if not request.session.has_key('viewed_post_%s' % post.id) :
+        post.cont_vist += 1
+        request.session['viewed_post_%s' % post.id] = True
+        post.save()
+
     context = {
         'post':post,
         'form':CommentForm
