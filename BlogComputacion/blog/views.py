@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404
 from django.core.mail import send_mail
 from .forms import FormPost, CommentForm
 from django.shortcuts import redirect, get_object_or_404
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from django.views.generic import ListView
 from django.contrib.auth.decorators import permission_required, login_required
 

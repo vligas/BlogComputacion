@@ -55,6 +55,14 @@
             </div>
           </div>
         </div>
+        <div class="input-field col s12">
+          <select multiple>
+            <option value="" disabled selected>Elige Categoria: </option>
+            {% for var in Category.objects.all %}
+            <option>{{ var.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
         {% endwith %}
         <br>
         <br>

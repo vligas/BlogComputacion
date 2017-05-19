@@ -6,11 +6,12 @@ class FormPost(forms.ModelForm):
 
     class Meta:
         model = Post
-        fields = ['title', 'text', 'cover']
+        fields = ['title', 'text', 'cover', 'category']
         labels = {
             'title': 'Titulo',
             'text': 'Contenido',
             'cover': 'Imagen de portada',
+            'category':'Agrega categorias'
         }
         # widgets = {
         #     'text': PagedownWidget
