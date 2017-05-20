@@ -40,10 +40,9 @@
 
           <div class="card-category grey lighten-2 center">
 
-            <div class="chip">Django</div>
-            <div class="chip">Base de datos</div>
-            <div class="chip">Backend</div>
-            <div class="chip">Medio</div>
+            {% for var in entrada.category.all %}
+              <div class="chip">{{ var.name }}</div>
+            {% endfor %}
 
           </div>
           </div>

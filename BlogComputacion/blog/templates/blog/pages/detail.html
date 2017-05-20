@@ -37,9 +37,9 @@
              <br>
            </div>
            <div class="card-category grey lighten-2 center">
-             <div class="chip">IA</div>
-             <div class="chip">Python</div>
-             <div class="chip">Avanzado</div>
+             {% for var in post.category.all %}
+             <div class="chip">{{ var.name }}</div>
+             {% endfor %}
            </div>
            {% endif %}
          </div>
