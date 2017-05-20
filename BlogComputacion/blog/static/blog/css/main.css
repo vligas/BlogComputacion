@@ -528,3 +528,20 @@ code
 
   border-bottom: 10px solid #e0e0e0;
 }
+
+.dropdown-content li>a, .dropdown-content li>span{
+  color:#2196F3;
+}
+
+[type="checkbox"]:checked+label:before
+{
+  border-top:2px solid transparent;
+  border-left:2px solid transparent;
+  border-right:2px solid #2196F3;
+  border-bottom:2px solid #2196F3;
+}
+
+.input-field a
+{
+  color:black;
+}

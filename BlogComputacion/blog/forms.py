@@ -17,6 +17,8 @@ class FormPost(forms.ModelForm):
         #     'text': PagedownWidget
         # }
 
+
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment

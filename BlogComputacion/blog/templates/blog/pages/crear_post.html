@@ -37,7 +37,7 @@
           <label for="{{form.title.id_for_label}}" data-error="{% for error in form.title.errors %} {{error}} {% endfor %}">{{form.title.label}}</label>
         </div>
         <br>
-        <p><b>IMPORTANTE.</b> la vista previa mostrada en este formulario no es un aproximado a como se vera en el blog, pero puede variar, siempre verificar la vista en detalle</p>
+        <p><b>IMPORTANTE.</b> la vista previa mostrada en este formulario es un aproximado a como se vera en el blog, pero puede variar, siempre verificar la vista en detalle</p>
         <br>
         <div id="editormd">
           {% render_field form.text style='display:none;' %}
@@ -46,7 +46,7 @@
         <br>
         <div class="input-field">
           <div class="file-field input-field">
-            <div class="btn btn-small">
+            <div class="btn btn-small blue">
               <span>{{form.cover.label}}</span>
               {% render_field form.cover %}
             </div>
@@ -55,18 +55,18 @@
             </div>
           </div>
         </div>
-        <div class="input-field col s12">
+        <div class="input-field">
           <select multiple>
             <option value="" disabled selected>Elige Categoria: </option>
             {% for var in category %}
-            <option>{{ var.name }}</option>
+            <option class="blue-text">{{ var.name }}</option>
             {% endfor %}
           </select>
         </div>
         {% endwith %}
         <br>
         <br>
-        <button type="submit" name="button" class="btn">Guardar</button>
+        <button type="submit" name="button" class="btn blue">Guardar</button>
 
 
       </form>
