@@ -66,10 +66,12 @@ def updatePost(request, id):
                 instance = form.save() # aqui era form.save..... deje el post = form.save() para poder hacer post.pk despues
                 return redirect(instance)
 
+        category = Category.objects.all()
         context = {
             "title": instance.title,
             "instance": instance,
             "form": form,
+            "category" : category
         }
         return render(request, 'blog/pages/crear_post.html', context)
     else:
