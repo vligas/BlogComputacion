@@ -46,8 +46,12 @@ def createPost(request):
             post.author = request.user
             post.save()
             return redirect('showOne', id=post.id) # aqui era id, no pk
-
-    return render(request, 'blog/pages/crear_post.html', {'form':form}) # aqui modifique la direccion del template y lo meti dentro de la carpeta pages
+    category = Category.objects.all()
+    context = {
+        'form':form,
+        'category':category
+    }
+    return render(request, 'blog/pages/crear_post.html', context) # aqui modifique la direccion del template y lo meti dentro de la carpeta pages
 
 
 @login_required
