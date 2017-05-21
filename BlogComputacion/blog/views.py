@@ -76,9 +76,15 @@ def showOne(request, id):
 
     return render(request, 'blog/pages/detail.html', context)
 
+@login_required
+@permission_required('blog.add_post', raise_exception=True)
+def showAllMyPost(request):
+    all_post = Post.objects.filter(author = request.user)
 
-
-
+    context = {
+        'all_post':all_post
+    }
+    return render(request, 'blog/pages/all_my_post.html', context)
 
 # -----------| UPDATE |-----------
 @login_required
@@ -120,7 +126,7 @@ def updatePost(request, id):
 def deletePost(request, id):
     post = get_object_or_404(Post, pk=id)
     post.delete()
-    return redirect('showAll')
+    return redirect('showAllMyPost')
 
 
 # ---------| VIEW PARA ENVIAR SUGERENCIAS |---------

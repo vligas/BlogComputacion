@@ -36,7 +36,7 @@
     <ul id="dropdown1" class="dropdown-content">
       <li><a href="#!">Mi perfil</a></li>
       {% if perms.blog.add_post %}
-        <li><a href="#!">Mis posts</a></li>
+        <li><a href="{% url 'showAllMyPost' %}">Mis posts</a></li>
         <li><a href="{% url 'create' %}">Escribir Post</a></li>
       {% endif %}
       <li class="divider"></li>
@@ -46,7 +46,7 @@
     <ul id="dropdown2" class="dropdown-content">
       <li><a href="#!">Mi perfil</a></li>
       {% if perms.blog.add_post %}
-        <li><a href="#!">Mis posts</a></li>
+        <li><a href="{% url 'showAllMyPost' %}">Mis posts</a></li>
         <li><a href="{% url 'create' %}">Escribir Post</a></li>
       {% endif %}
       <li class="divider"></li>

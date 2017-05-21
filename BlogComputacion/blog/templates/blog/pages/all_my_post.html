@@ -1,0 +1,14 @@
+{% extends 'blog/main2.html' %}
+
+{% block title %} Todos mis posts {% endblock %}
+
+{% block content %}
+{% for entrada in all_post %}
+<h3><a href="{% url 'showOne' entrada.id %}">{{ entrada.title }}</a></h3>
+<br>
+<a href="{% url 'update' entrada.id %}">Editar</a>
+<a href="{% url 'deletePost' entrada.id %}">Eliminar</a>
+
+{% endfor %}
+
+{% endblock %}
