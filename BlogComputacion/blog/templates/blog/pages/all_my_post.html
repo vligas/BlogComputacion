@@ -3,12 +3,29 @@
 {% block title %} Todos mis posts {% endblock %}
 
 {% block content %}
-{% for entrada in all_post %}
-<h3><a href="{% url 'showOne' entrada.id %}">{{ entrada.title }}</a></h3>
-<br>
-<a href="{% url 'update' entrada.id %}">Editar</a>
-<a href="{% url 'deletePost' entrada.id %}">Eliminar</a>
 
-{% endfor %}
-
+<table>
+  <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Estado</th>
+      <th>Vistas</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for entrada in all_post %}
+      <tr>
+        <th>{{entrada.title}}</th>
+        <th>Publicado</th>
+        <th>{{entrada.cont_vist}}</th>
+        <th>
+          <a class="white-text btn red "href="{% url 'deletePost' entrada.id %}"><i class="fa fa-trash-o fa-lg"></i></a>
+          <a class="white-text btn blue"href="{% url 'update' entrada.id %}"><i class="fa fa-pencil fa-lg"></i></a>
+        </th>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<br><br><br>
 {% endblock %}
