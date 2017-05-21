@@ -56,12 +56,7 @@
           </div>
         </div>
         <div class="input-field">
-          <select multiple>
-            <option value="" disabled selected>Elige Categoria: </option>
-            {% for var in category %}
-            <option class="blue-text">{{ var.name }}</option>
-            {% endfor %}
-          </select>
+          {% render_field form.category %}
         </div>
         {% endwith %}
         <br>
