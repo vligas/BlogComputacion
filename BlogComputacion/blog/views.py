@@ -113,9 +113,14 @@ def updatePost(request, id):
         return redirect(instance)
 
 
-# -----------| TODO TODO TODO TODO TODO |------------
-#              AÑADIR DELETE IMPORTANTE
+# -----------| DELETE VIEW|------------
 
+@login_required
+@permission_required('blog.add_post', raise_exception=True)
+def deletePost(request, id):
+    post = get_object_or_404(Post, pk=id)
+    post.delete()
+    return redirect('showAll')
 
 
 # ---------| VIEW PARA ENVIAR SUGERENCIAS |---------
