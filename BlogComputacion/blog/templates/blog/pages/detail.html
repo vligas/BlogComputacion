@@ -33,18 +33,11 @@
            <div class="post-body">
              <p>
                <a href="{% url 'update' post.id %}" class="btn blue white-text">Editar</a>
+                <a class="white-text btn red"href="{% url 'deletePost' post.id %}"><i class="fa fa-trash-o fa-lg"></i> Borrar</a>
+
              </p>
              <br>
            </div>
-
-           <div class="post-body">
-             <p>
-               <a class="red-text"href="{% url 'deletePost' post.id %}"><i class="fa fa-trash-o fa-lg"></i></a>
-             </p>
-             <br>
-           </div>
-
-
            <div class="card-category grey lighten-2 center">
              {% for var in post.category.all %}
              <div class="chip">{{ var.name }}</div>

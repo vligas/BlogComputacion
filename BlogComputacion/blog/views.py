@@ -39,10 +39,8 @@ def createPost(request):
             return redirect('showOne', id=post.id)
 
     # en caso de no ser POST, simplemente se devuelve el contextoy se renderiza, (esto quiere decir que se esta intentando acceder para empezara  crear el post, no para guardarlo)
-    category = Category.objects.all()
     context = {
     'form':form,
-    'category':category
     }
 
     return render(request, 'blog/pages/crear_post.html', context)
@@ -93,18 +91,15 @@ def updatePost(request, id):
 
         if( request.method == "POST"): # si es POST quiere decir que se esta actualizando el post
             if form.is_valid():
-                print(">> ENTRE")
 
                 instance = form.save()
                 return redirect(instance) # esto funciona ya que si a redirect() se le pasa un objeto este llama a su metodo get_absolute_url
 
         # en caso de ser GET significa que el usuario esta solicitando el formulario para actualizar el post
-        category = Category.objects.all()
         context = {
             "title": instance.title,
             "instance": instance,
             "form": form,
-            "category" : category
         }
 
         return render(request, 'blog/pages/crear_post.html', context)
