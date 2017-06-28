@@ -7,8 +7,25 @@
 <!-- <h1 class="center">Todos los posts: </h1> -->
 
   <div class="row">
+    <form class="form col s12" method="GET">
+      <div class="input-field col s6 l5">
+      <i class="prefix material-icons">search</i>
+        <input id="search" type="text" name="">
+      </div>
+      <div class="input-field col s6 l2">
+        <select name="category">
+          <option value="" disabled selected>Categorias</option>
+          {% for categoria in category %}
+            <option value="{{categoria.name}}">{{categoria.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-flat">Buscar</button>
+    </form>
+
     <div class="col s12 cards-container-all">
-      {% for entrada in object_list %}
+      {% for entrada in posts %}
       {# <div class="col s12">#}
         <div class="card z-depth-3">
           <div class="card-image">
