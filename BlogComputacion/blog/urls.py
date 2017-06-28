@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^posts/(?P<id>[0-9]+)/borrar', views.deletePost, name ='deletePost'),
     url(r'^enviarSugerencia/', views.enviarSugerencia, name = 'enviarSugerencia'),
     url(r'^posts/(?P<id>[0-9]+)/comentar/', views.addComment, name = "addComment"),
-    url(r'^posts/(?P<id>[0-9]+)/eliminar', views.removeComment, name = 'removeComment')
+    url(r'^posts/(?P<id>[0-9]+)/eliminar', views.removeComment, name = 'removeComment'),
+    url(r'^search/$', views.search, name='search'),
 ]

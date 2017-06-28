@@ -1,0 +1,138 @@
+{% extends 'blog/main.html' %}
+{% load staticfiles %}
+{% block title %}Home Page{% endblock %}
+
+
+
+
+{% block content %}
+
+
+<nav class="raised-2">
+  <div class="nav-wrapper grey darken-3 z-depth-2">
+    <form action="/search/" method="GET">
+      {% csrf_token %}
+      <div class="input-field">
+        <input id="search" type="search" name="q" required>
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons">close</i>
+      </div>
+    </form>
+  </div>
+</nav>
+
+
+
+<div class="categorias center">
+  <a href="#!">
+    <div class="chip active">
+      Todos
+    </div>
+  </a>
+  <a href="#!">
+    <div class="chip">
+      Lenguajes
+    </div>
+  </a>
+  <a href="#!">
+    <div class="chip">
+      Frameworks
+    </div>
+  </a>
+  <a href="#!">
+    <div class="chip">
+      Diseño Web
+    </div>
+  </a>
+  <a href="#!">
+    <div class="chip">
+      Bases de Datos
+    </div>
+  </a>
+  <a href="#!">
+    <div class="chip">
+      Teoria
+    </div>
+  </a>
+  <a href="#!">
+    <div class="chip">
+      Otros
+    </div>
+  </a>
+</div>
+
+<div class="row">
+  <div class="col s12 cards-container-all">
+    {% for entrada in Posts %}
+    {# <div class="col s12">#}
+      <div class="card z-depth-3">
+        <div class="card-image">
+
+          <img src="{{entrada.cover.url}}" alt="" class="responsive-img">
+        </div>
+        <div class="card-content">
+          <!-- <div class="col s12 m5 img-post-all">
+          </div> -->
+          <h5 class="card-title-all"><a href="{{entrada.get_absolute_url}}" class="article-link">{{entrada.title}}</a></h5>
+          <div class="divider"></div>
+          <p class="card-info grey-text">
+            <small>
+              <span>Por {{entrada.author.username}}.</span>
+              <span>publicado: {{entrada.created_at}}</span>
+              <span><i class="fa fa-eye"></i> {{ entrada.cont_vist }}</span>
+              <span><i class="fa fa-comment"></i> {{ entrada.comments.count }}</span>
+            </small>
+          </p>
+          <br>
+          <!-- <div class="section">
+            <p class="content-markdown">{{entrada.text|truncatechars:500}}</p>
+          </div> -->
+          <div class="clearfix"></div>
+          <div class="center">
+            <a href="{{entrada.get_absolute_url}}" class="btn blue">Leer</a>
+          </div>
+        </div>
+
+        <div class="card-category grey lighten-2 center">
+
+          {% for var in entrada.category.all %}
+            <div class="chip">{{ var.name }}</div>
+          {% endfor %}
+
+        </div>
+        </div>
+      {# </div>#}
+    {% endfor  %}
+  </div>
+</div>
+
+
+        <br>
+        <div class="categorias-populares">
+          <h3 class="section-title">Categorias Populares <i class="fa fa-tags" aria-hidden="true"></i></h3>
+
+          <div class="chip z-depth-1">IA</div>
+          <div class="chip z-depth-1">Python</div>
+          <div class="chip z-depth-1">Avanzado</div>
+          <div class="chip z-depth-1">Framework</div>
+          <div class="chip z-depth-1">Django</div>
+          <div class="chip z-depth-1">Teoria</div>
+          <div class="chip z-depth-1">C</div>
+          <div class="chip z-depth-1">Java</div>
+          <div class="chip z-depth-1">Javascript</div>
+          <div class="chip z-depth-1">Laravel</div>
+          <div class="chip z-depth-1">Php</div>
+          <div class="chip z-depth-1">Atom</div>
+          <div class="chip z-depth-1">Sublime</div>
+          <div class="chip z-depth-1">Servidores</div>
+          <div class="chip z-depth-1">DB</div>
+          <div class="chip z-depth-1">Nodejs</div>
+          <div class="chip z-depth-1">Html</div>
+          <div class="chip z-depth-1">React</div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+{% endblock %}

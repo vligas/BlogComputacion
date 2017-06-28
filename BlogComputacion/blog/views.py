@@ -5,10 +5,16 @@ from .forms import FormPost, CommentForm
 from .models import Post, Comment, Category
 from django.views.generic import ListView
 from django.contrib.auth.decorators import permission_required, login_required
+from django.db.models import Q #necesario para la busqueda
 
 #----------| Index de la pagina |----------
 def index(request):
     return render(request, 'blog/pages/index.html')
+#----------| Busqueda de Posts |------------
+def search(request):
+    temp = request.GET.get('q','')
+    Posts = Post.objects.filter(title__icontains=temp)
+    return render(request, 'blog/pages/search.html', {'Posts': Posts})
 
 
 

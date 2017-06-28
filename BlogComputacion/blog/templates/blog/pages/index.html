@@ -10,9 +10,10 @@
 
 <nav class="raised-2">
   <div class="nav-wrapper grey darken-3 z-depth-2">
-    <form method="GET">
+    <form action="/search/" method="GET">
+      {% csrf_token %}
       <div class="input-field">
-        <input id="search" type="search" name="q" required>
+        <input id="search" type="search" name="q">
         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
         <i class="material-icons">close</i>
       </div>
