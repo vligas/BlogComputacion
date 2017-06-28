@@ -48,12 +48,17 @@ def createPost(request):
 
 
 #-------------| READ |-------------
-class showAll(ListView):
+def showAll(request):
+    posts = Post.objects.all()
+    category = Category.objects.all()
 
-    template_name = 'blog/pages/all_post_detail.html'
-    model = Post
-    paginate_by = 10 # numero de elementos por pagina
-    ordering = ['-id'] # para que ordene de menor a mayor (-) tomando en cuenta el id
+    context = {
+        'posts':posts,
+        'category':category
+    }
+    return render(request,'blog/pages/all_post_detail.html',context)
+    # paginate_by = 10 # numero de elementos por pagina
+    # ordering = ['-id'] # para que ordene de menor a mayor (-) tomando en cuenta el id
 
 
 
