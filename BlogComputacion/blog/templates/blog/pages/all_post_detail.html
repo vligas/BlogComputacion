@@ -7,14 +7,12 @@
 <!-- <h1 class="center">Todos los posts: </h1> -->
 
   <div class="row">
-    <form class="form col s12" method="GET">
-      <div class="input-field col s6 l5">
-      <i class="prefix material-icons">search</i>
-        <input id="search" type="text" name="">
-      </div>
+    <form class="form col s12" action='/posts/search_category/' method="GET">
       <div class="input-field col s6 l2">
         <select name="category">
+          <i class="material-icons">search</i>
           <option value="" disabled selected>Categorias</option>
+          <option value="all">Todas</option>
           {% for categoria in category %}
             <option value="{{categoria.name}}">{{categoria.name}}</option>
           {% endfor %}

@@ -6,6 +6,7 @@ from .models import Post, Comment, Category
 from django.views.generic import ListView
 from django.contrib.auth.decorators import permission_required, login_required
 from django.db.models import Q #necesario para la busqueda
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 #----------| Index de la pagina |----------
 def index(request):
@@ -16,7 +17,18 @@ def search(request):
     Posts = Post.objects.filter(title__icontains=temp)
     return render(request, 'blog/pages/search.html', {'Posts': Posts})
 
-
+def search_category(request):
+    temp = request.GET.get('category','')
+    if temp == 'all':
+        return redirect('showAll')
+    else:
+        posts = Post.objects.filter(category__name=temp)
+        category = Category.objects.all()
+        context = {
+            'posts':posts,
+            'category':category
+        }
+        return render(request,'blog/pages/all_post_detail.html',context)
 
 #--------| views que faltan definir |--------
 def contact(request):
@@ -55,14 +67,25 @@ def createPost(request):
 
 #-------------| READ |-------------
 def showAll(request):
-    posts = Post.objects.all()
+    posts_list = Post.objects.all()
+    page=request.GET.get('page', 1)
     category = Category.objects.all()
+
+    paginator = Paginator(posts_list,10)
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
 
     context = {
         'posts':posts,
         'category':category
     }
     return render(request,'blog/pages/all_post_detail.html',context)
+
     # paginate_by = 10 # numero de elementos por pagina
     # ordering = ['-id'] # para que ordene de menor a mayor (-) tomando en cuenta el id
 
