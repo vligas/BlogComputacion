@@ -7,10 +7,29 @@ from django.views.generic import ListView
 from django.contrib.auth.decorators import permission_required, login_required
 from django.db.models import Q #necesario para la busqueda
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import random
+import operator
+
 
 #----------| Index de la pagina |----------
 def index(request):
-    return render(request, 'blog/pages/index.html')
+    category = Category.objects.all()
+    posts = Post.objects.all()
+    lon = len(posts)
+    posts_order = sorted(posts, key=operator.attrgetter('cont_vist'))
+    posts_populares = [
+        posts[lon-1],
+        posts[lon-2],
+        posts[lon-3]
+    ]
+
+    posts_nuevos = [posts_order[lon-1], posts_order[lon-2], posts_order[lon-3], posts_order[lon-4]]
+    context = {
+        'category':category,
+        'posts_populares':posts_populares,
+        'posts_nuevos':posts_nuevos
+    }
+    return render(request, 'blog/pages/index.html', context)
 #----------| Busqueda de Posts |------------
 def search(request):
     temp = request.GET.get('q','')

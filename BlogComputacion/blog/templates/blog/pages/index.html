@@ -29,171 +29,55 @@
       Todos
     </div>
   </a>
-  <a href="#!">
-    <div class="chip">
-      Lenguajes
-    </div>
-  </a>
-  <a href="#!">
-    <div class="chip">
-      Frameworks
-    </div>
-  </a>
-  <a href="#!">
-    <div class="chip">
-      Diseño Web
-    </div>
-  </a>
-  <a href="#!">
-    <div class="chip">
-      Bases de Datos
-    </div>
-  </a>
-  <a href="#!">
-    <div class="chip">
-      Teoria
-    </div>
-  </a>
-  <a href="#!">
-    <div class="chip">
-      Otros
-    </div>
-  </a>
+  {% for categoria in category %}
+    <a href="#!">
+      <div class="chip">
+        {{categoria.name}}
+      </div>
+    </a>
+  {% endfor %}
 </div>
 
 
 <div class="section">
   <div class="row">
     <div class="col s12 l8 cards-container">
-
-      <div class="card z-depth-3">
-        <div class="card-image">
-            <img src="{% static 'blog/img/django.jpg' %}">
+      {% for entrada in posts_nuevos %}
+        <div class="card z-depth-3">
+          <div class="card-image">
+            <img src="{{entrada.cover.url}}">
             <div class="nuevo">
               <span>Nuevo</span>
             </div>
-        </div>
-        <div class="card-content">
-          <p class="card-info grey-text">
-            <small>
-              <span class="left">Por Victor Ligas</span> <span class="right">4 de abril del 2016</span>
-            </small>
-          </p>
-          <a href="#!" class="article-link"><p class="title"><h5>Migraciones en Django</h5></p></a>
-          <div class="divider"></div>
-          <div class="section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam quis iusto tempore cumque similique saepe illum? Deleniti tempore nemo repellat magnam, cum reprehenderit consectetur necessitatibus quos nostrum ipsum quisquam.</p>
+          </div>
+          <div class="card-content">
+            <p class="card-info grey-text">
+              <small>
+                <span class="left">{{entrada.author.username}}</span> <span class="right">{{entrada.created_at}}</span>
+              </small>
+            </p>
+            <a href="#!" class="article-link"><p class="title"><h5>{{entarda.title}}</h5></p></a>
+            <div class="divider"></div>
+            <!-- <div class="section">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam quis iusto tempore cumque similique saepe illum? Deleniti tempore nemo repellat magnam, cum reprehenderit consectetur necessitatibus quos nostrum ipsum quisquam.</p>
+            </div> -->
+          </div>
+          <div class="card-action">
+            <div class="row">
+              <div class="col s4"><a href="{{entrada.get_absolute_url}}" class="">  <button class="btn btn-small waves-effect waves-light blue" type="submit" name="action">Leer</button></a></div>
+              <div class="col s4 grey-text text-darken-2"><i class="fa fa-eye"></i> {{entrada.cont_vist}}</div>
+              <div class="col s4 grey-text text-darken-2"><i class="fa fa-comment"></i> {{ entrada.comments.count }}</div>
+            </div>
+          </div>
+          <div class="card-category grey lighten-2 center">
+            {% for var in entrada.category.all %}
+              <div class="chip">{{ var.name }}</div>
+            {% endfor %}
           </div>
         </div>
-        <div class="card-action">
-          <div class="row">
-            <div class="col s4"><a href="#" class="">  <button class="btn btn-small waves-effect waves-light blue" type="submit" name="action">Leer</button></a></div>
-            <div class="col s4 grey-text text-darken-2"><i class="fa fa-eye"></i> 320</div>
-            <div class="col s4 grey-text text-darken-2"><i class="fa fa-comment"></i> 3</div>
-          </div>
-        </div>
-        <div class="card-category grey lighten-2 center">
-          <div class="chip">Django</div>
-          <div class="chip">Python</div>
-          <div class="chip">Framework</div>
-        </div>
+      {% endfor %}
       </div>
 
-
-
-
-      <div class="card z-depth-3">
-        <div class="card-image">
-          <img src="{% static 'blog/img/redes.jpg' %}">
-        </div>
-        <div class="card-content">
-          <p class="card-info grey-text">
-            <small>
-              <span class="left">Por Crismary Castellanos</span> <span class="right">4 de abril del 2016</span>
-            </small>
-          </p>
-          <a href="#!" class="article-link"><p class="title"><h5>Redes Neuronales con Python</h5></p></a>
-          <div class="divider"></div>
-          <div class="section">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt beatae neque officia cum accusantium quo, consequuntur asperiores. Sed dolorum consectetur fugit illum dolor doloremque. Voluptatibus dolor, non modi maxime impedit.</p>
-          </div>
-        </div>
-        <div class="card-action">
-          <div class="row">
-            <div class="col s4"><a href="#" class="">  <button class="btn btn-small waves-effect waves-light blue" type="submit" name="action">Leer</button></a></div>
-            <div class="col s4 grey-text text-darken-2"><i class="fa fa-eye"></i> 2.1k</div>
-            <div class="col s4 grey-text text-darken-2"><i class="fa fa-comment"></i> 50</div>
-          </div>
-        </div>
-        <div class="card-category grey lighten-2 center">
-          <div class="chip">IA</div>
-          <div class="chip">Python</div>
-          <div class="chip">Avanzado</div>
-        </div>
-      </div>
-
-
-
-       <div class="card z-depth-3">
-         <div class="card-image">
-           <img src="{% static 'blog/img/unity.jpg' %}">
-         </div>
-         <div class="card-content">
-           <a href="#!" class="article-link"><p class="title"><h5>Desarrollo de Videojuegos en Unity</h5></p></a>
-           <div class="divider"></div>
-           <p class="card-info grey-text">
-             <small>
-               <span class="left">Por David. posted: 4 de abril del 2016</span>
-             </small>
-           </p>
-           <div class="section">
-             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab tempora hic cum aperiam perferendis sequi, eum officiis nihil, aut, aliquid consequatur quidem necessitatibus deleniti rerum eaque neque porro cupiditate nulla!</p>
-           </div>
-         </div>
-         <div class="card-action">
-           <div class="row">
-             <div class="col s4"><a href="#" class="">  <button class="btn btn-small waves-effect waves-light blue" type="submit" name="action">Leer</button></a></div>
-             <div class="col s4 grey-text text-darken-2"><i class="fa fa-eye"></i> 1.5k</div>
-             <div class="col s4 grey-text text-darken-2"><i class="fa fa-comment"></i> 30</div>
-           </div>
-         </div>
-         <div class="card-category grey lighten-2 center">
-           <div class="chip">Videojuegos</div>
-           <div class="chip">Unity</div>
-         </div>
-       </div>
-
-
-
-       <div class="card z-depth-3">
-         <div class="card-image">
-           <img src="{% static 'blog/img/r.png' %}">
-         </div>
-         <div class="card-content">
-           <p class="card-info grey-text">
-             <small>
-               <span class="left">Por Alvaro</span> <span class="right">4 de abril del 2016</span>
-             </small>
-           </p>
-           <a href="#!" class="article-link"><p class="title"><h5>Introduccion a R</h5></p></a>
-           <div class="divider"></div>
-           <div class="section">
-             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae molestiae odit tempore rem nostrum hic fuga inventore consequuntur dignissimos mollitia, atque quas debitis dolorum commodi. Recusandae incidunt corporis voluptatem, necessitatibus?</p>
-           </div>
-         </div>
-         <div class="card-action">
-           <div class="row">
-             <div class="col s4"><a href="#" class="">  <button class="btn btn-small waves-effect waves-light blue" type="submit" name="action">Leer</button></a></div>
-             <div class="col s4 grey-text text-darken-2"><i class="fa fa-eye"></i> 1.5k</div>
-             <div class="col s4 grey-text text-darken-2"><i class="fa fa-comment"></i> 30</div>
-           </div>
-         </div>
-         <div class="card-category grey lighten-2 center">
-           <div class="chip">R</div>
-           <div class="chip">Estadistica</div>
-         </div>
-       </div>
-    </div>
 
 
     <div class="col s12 l4">
@@ -201,73 +85,25 @@
         <div class="popular-posts">
           <h3 class="section-title">Posts Populares</h3>
 
-
-          <div class="section">
-            <div class="row popular-post">
-              <div class="col s3 image-post">
-                <div class="image-cropper z-depth-3">
-                  <img src="{% static 'blog/img/atom.jpg' %}" alt="" >
+          {% for entrada in posts_populares  %}
+            <div class="section">
+              <div class="row popular-post">
+                <div class="col s3 image-post">
+                  <div class="image-cropper z-depth-3">
+                    <img src="{{entrada.cover.url}}" alt="" >
+                  </div>
+                  <div class="vistas blue center white-text z-depth-3">
+                    <i class="fa fa-eye"></i> {{ entrada.cont_vist }}
+                  </div>
                 </div>
-                <div class="vistas blue center white-text z-depth-3">
-                  <i class="fa fa-eye"></i> 2.5k
+                <div class="col s9">
+                  <a href="{{entrada.get_absolute_url}}" class="article-link"><h5>{{entrada.title}}</h5></a>
                 </div>
               </div>
-              <div class="col s9">
-                <div class="tags">
-                  <div class="chip">Herramientas</div>
-                  <div class="chip">Atom</div>
-                </div>
-                <a href="#!" class="article-link"><h5>Mejores paquetes de Atom</h5></a>
-              </div>
+              <div class="divider"></div>
             </div>
-            <div class="divider"></div>
-          </div>
+          {% endfor %}
 
-
-          <div class="section">
-            <div class="row popular-post">
-              <div class="col s3 image-post">
-                <div class="image-cropper z-depth-3">
-                  <img src="{% static 'blog/img/nodejs.jpg' %}" alt="" >
-                </div>
-                <div class="vistas blue center white-text z-depth-3">
-                  <i class="fa fa-eye"></i> 2.3k
-                </div>
-              </div>
-              <div class="col s9">
-                <div class="tags">
-                  <div class="chip">Nodejs</div>
-                  <div class="chip">Backend</div>
-                </div>
-                <a href="#!" class="article-link"><h5>Implementar una API basica con Nodejs</h5></a>
-              </div>
-            </div>
-            <div class="divider"></div>
-          </div>
-
-
-
-          <div class="section">
-            <div class="row popular-post">
-              <div class="col s3 image-post">
-                <div class="image-cropper z-depth-3">
-                  <img src="{% static 'blog/img/laravel.png' %}" alt="" >
-                </div>
-                <div class="vistas blue center white-text z-depth-3">
-                  <i class="fa fa-eye"></i> 1.5k
-                </div>
-
-              </div>
-              <div class="col s9">
-                <div class="tags">
-                  <div class="chip">Laravel</div>
-                  <div class="chip">Php</div>
-                </div>
-                <a href="#!" class="article-link"><h5>Introduccion a Laravel </h5></a>
-              </div>
-            </div>
-            <div class="divider"></div>
-          </div>
 
 
 
@@ -307,24 +143,9 @@
         <div class="categorias-populares">
           <h3 class="section-title">Categorias Populares <i class="fa fa-tags" aria-hidden="true"></i></h3>
 
-          <div class="chip z-depth-1">IA</div>
-          <div class="chip z-depth-1">Python</div>
-          <div class="chip z-depth-1">Avanzado</div>
-          <div class="chip z-depth-1">Framework</div>
-          <div class="chip z-depth-1">Django</div>
-          <div class="chip z-depth-1">Teoria</div>
-          <div class="chip z-depth-1">C</div>
-          <div class="chip z-depth-1">Java</div>
-          <div class="chip z-depth-1">Javascript</div>
-          <div class="chip z-depth-1">Laravel</div>
-          <div class="chip z-depth-1">Php</div>
-          <div class="chip z-depth-1">Atom</div>
-          <div class="chip z-depth-1">Sublime</div>
-          <div class="chip z-depth-1">Servidores</div>
-          <div class="chip z-depth-1">DB</div>
-          <div class="chip z-depth-1">Nodejs</div>
-          <div class="chip z-depth-1">Html</div>
-          <div class="chip z-depth-1">React</div>
+          {% for categoria in category %}
+            <div class="chip z-depth-1">{{categoria.name}}</div>
+          {% endfor %}
 
         </div>
       </div>
