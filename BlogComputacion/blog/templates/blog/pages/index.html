@@ -24,14 +24,14 @@
 
 
 <div class="categorias center">
-  <a href="#!">
-    <div class="chip active">
+  <a href="/posts/search_category/?category=all">
+    <div class="chip active" name="category">
       Todos
     </div>
   </a>
   {% for categoria in category_show %}
-    <a href="#!">
-      <div class="chip">
+    <a href="/posts/search_category/?category={{categoria.name}}">
+      <div class="chip" name='category'>
         {{categoria.name}}
       </div>
     </a>
@@ -144,7 +144,9 @@
           <h3 class="section-title">Categorias Populares <i class="fa fa-tags" aria-hidden="true"></i></h3>
 
           {% for categoria in category %}
-            <div class="chip z-depth-1">{{categoria}}</div>
+            <div class="chip z-depth-1" name="category">
+              <a href="/posts/search_category/?category={{categoria.name}}">{{categoria.name}}</a>
+            </div>
           {% endfor %}
 
         </div>
