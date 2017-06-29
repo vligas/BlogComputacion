@@ -14,6 +14,15 @@ import operator
 #----------| Index de la pagina |----------
 def index(request):
     category = Category.objects.all()
+    category_show = [
+        category[0],
+        category[1],
+        category[2],
+        category[3],
+        category[4],
+        category[5],
+        category[6],
+    ]
     posts = Post.objects.all()
     lon = len(posts)
     posts_order = sorted(posts, key=operator.attrgetter('cont_vist'))
@@ -22,10 +31,10 @@ def index(request):
         posts[lon-2],
         posts[lon-3]
     ]
-
     posts_nuevos = [posts_order[lon-1], posts_order[lon-2], posts_order[lon-3], posts_order[lon-4]]
     context = {
         'category':category,
+        'category_show':category_show,
         'posts_populares':posts_populares,
         'posts_nuevos':posts_nuevos
     }
