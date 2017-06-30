@@ -29,7 +29,7 @@ def index(request):
     posts_populares = [
         posts[lon-1],
         posts[lon-2],
-        posts[lon-3]
+        posts[lon-3],
     ]
     posts_nuevos = [posts[lon-1], posts[lon-2], posts[lon-3], posts[lon-4]]
 
@@ -221,6 +221,22 @@ def enviarSugerencia(request):
 @login_required
 def addComment(request, id):
     post = get_object_or_404(Post, pk=id)
+    form_comment = CommentForm()
+
+    if request.method == 'POST':
+        form_comment = CommentForm(request.POST)
+
+        if form_comment.is_valid():
+            comment = form_comment.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+
+    return redirect('showOne', id=post.id)
+
+@login_required
+def addReply(request, idp, idc):
+    post = get_object_or_404(Post, pk=idp)
     form_comment = CommentForm()
 
     if request.method == 'POST':
