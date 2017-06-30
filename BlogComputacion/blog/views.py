@@ -31,12 +31,23 @@ def index(request):
         posts[lon-2],
         posts[lon-3]
     ]
-    posts_nuevos = [posts_order[lon-1], posts_order[lon-2], posts_order[lon-3], posts_order[lon-4]]
+    posts_nuevos = [posts[lon-1], posts[lon-2], posts[lon-3], posts[lon-4]]
+
+    category_populares = []
+
+    for x in posts_populares:
+        for y in x.category.all():
+            if not y in category_populares:
+                category_populares.append(y)
+
+    print(category_populares)
     context = {
         'category':category,
         'category_show':category_show,
+        'category_populares':category_populares,
         'posts_populares':posts_populares,
         'posts_nuevos':posts_nuevos
+
     }
     return render(request, 'blog/pages/index.html', context)
 #----------| Busqueda de Posts |------------

@@ -143,7 +143,7 @@
         <div class="categorias-populares">
           <h3 class="section-title">Categorias Populares <i class="fa fa-tags" aria-hidden="true"></i></h3>
 
-          {% for categoria in category %}
+          {% for categoria in category_populares %}
             <div class="chip z-depth-1" name="category">
               <a href="/posts/search_category/?category={{categoria.name}}">{{categoria.name}}</a>
             </div>
