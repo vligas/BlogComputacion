@@ -29,14 +29,14 @@ def index(request):
     posts_populares = [
         posts[lon-1],
         posts[lon-2],
-        posts[lon-3]
+        #posts[lon-3],
     ]
     posts_nuevos = [posts_order[lon-1], posts_order[lon-2], posts_order[lon-3], posts_order[lon-4]]
     context = {
         'category':category,
         'category_show':category_show,
         'posts_populares':posts_populares,
-        'posts_nuevos':posts_nuevos
+        'posts_nuevos':posts_nuevos,
     }
     return render(request, 'blog/pages/index.html', context)
 #----------| Busqueda de Posts |------------
@@ -210,6 +210,22 @@ def enviarSugerencia(request):
 @login_required
 def addComment(request, id):
     post = get_object_or_404(Post, pk=id)
+    form_comment = CommentForm()
+
+    if request.method == 'POST':
+        form_comment = CommentForm(request.POST)
+
+        if form_comment.is_valid():
+            comment = form_comment.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.save()
+
+    return redirect('showOne', id=post.id)
+
+@login_required
+def addReply(request, idp, idc):
+    post = get_object_or_404(Post, pk=idp)
     form_comment = CommentForm()
 
     if request.method == 'POST':

@@ -70,17 +70,47 @@
                  {% for comment in post.comments.all %}
                  <div class="section">
                    <div class="comment">
-                     <div>
+                    <div>
+                      {% if comment.parent == None %}
                        <span class="chip user-chip blue white-text">
                          <img src="http://cyndidale.com/wp-content/uploads/2015/11/user-placeholder-circle.png" alt="">
                          {{ comment.author }}
                        </span>
                        <small>{{ comment.created_date|timesince }} ago</small>
+
                        {% if perms.blog.add_post or comment.author == user %}
                        <a class="red-text"href="{% url 'removeComment' comment.id %}"><i class="fa fa-trash-o fa-lg"></i></a>
                        {% endif %}
+
                      </div>
-                     <div class="comment-text grey lighten-2 ">{{ comment.text|linebreaks }}</div>
+                     <div class="comment-text grey lighten-2 ">{{ comment.text|linebreaks }}
+                     {% endif %}
+                   </div>
+
+
+
+                     {% for reply in comment.replies.all %}
+                     <blockquote>
+                         <div class="section">
+                           <div class="comment">
+                            <div>
+                               <span class="chip user-chip blue white-text">
+                                 <img src="http://cyndidale.com/wp-content/uploads/2015/11/user-placeholder-circle.png" alt="">
+                                 {{ reply.author }}
+                               </span>
+                               <small>{{ reply.created_date|timesince }} ago</small>
+                               {% if perms.blog.add_post or reply.author == user %}
+                               <a class="red-text"href="{% url 'removeComment' comment.id %}"><i class="fa fa-trash-o fa-lg"></i></a>
+                               {% endif %}
+                             </div>
+                             <div class="comment-text grey lighten-2 ">{{ reply.text|linebreaks }}</div>
+                           </div>
+                         </div>
+                      </blockquote>
+                     {% endfor %}
+
+<!-- LA IDEA ESTA BIEN PERO FALTA PONERLO BONITO , PIDE AYUDA -->
+
                    </div>
                  </div>
                  {% empty %}
