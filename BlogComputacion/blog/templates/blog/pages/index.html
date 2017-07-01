@@ -10,8 +10,7 @@
 
 <nav class="raised-2">
   <div class="nav-wrapper grey darken-3 z-depth-2">
-    <form action="/search/" method="GET">
-      {% csrf_token %}
+    <form action="{% url 'search' %}" method="GET"> {# BUG usar {% url %} en un futuro please #}
       <div class="input-field">
         <input id="search" type="search" name="q">
         <label class="label-icon" for="search"><i class="material-icons">search</i></label>
@@ -30,7 +29,7 @@
     </div>
   </a>
   {% for categoria in category_show %}
-    <a href="/posts/search_category/?category={{categoria.name}}">
+    <a href="{% url 'search_category' %}?category={{categoria.name}}">
       <div class="chip" name='category'>
         {{categoria.name}}
       </div>
@@ -41,14 +40,14 @@
 
 <div class="section">
   <div class="row">
-    <div class="col s12 l8 cards-container">
+    <div class="col s12 l6 xl8 cards-container">
       {% for entrada in posts_nuevos %}
         <div class="card z-depth-3">
           <div class="card-image">
             <img src="{{entrada.cover.url}}">
-            <div class="nuevo">
+            <!-- <div class="nuevo">
               <span>Nuevo</span>
-            </div>
+            </div> -->
           </div>
           <div class="card-content">
             <p class="card-info grey-text">
@@ -56,7 +55,8 @@
                 <span class="left">{{entrada.author.username}}</span> <span class="right">{{entrada.created_at}}</span>
               </small>
             </p>
-            <a href="#!" class="article-link"><p class="title"><h5>{{entarda.title}}</h5></p></a>
+            <a href="#!" class="article-link"><p class="title"><h5>{{entrada.title}}</h5></p></a>
+
             <div class="divider"></div>
             <div class="section">
               <p>{{ entrada.text|truncatewords:30 }}</p>
@@ -71,7 +71,9 @@
           </div>
           <div class="card-category grey lighten-2 center">
             {% for var in entrada.category.all %}
-              <div class="chip">{{ var.name }}</div>
+              <div class="chip">
+                <a href="{% url 'search_category' %}?category={{var.name}}">{{var.name}}</a>
+              </div>
             {% endfor %}
           </div>
         </div>
@@ -80,7 +82,7 @@
 
 
 
-    <div class="col s12 l4">
+    <div class="col s12 l6 xl4">
       <div class="sidebar">
         <div class="popular-posts">
           <h3 class="section-title">Posts Populares</h3>
@@ -88,7 +90,7 @@
           {% for entrada in posts_populares  %}
             <div class="section">
               <div class="row popular-post">
-                <div class="col s3 image-post">
+                <div class="col m3 l4 image-post">
                   <div class="image-cropper z-depth-3">
                     <img src="{{entrada.cover.url}}" alt="" >
                   </div>
@@ -96,7 +98,15 @@
                     <i class="fa fa-eye"></i> {{ entrada.cont_vist }}
                   </div>
                 </div>
-                <div class="col s9">
+                <div class="col m9 l8">
+                  <div class="tags">
+                    {% for category in entrada.category.all %}
+                    <div class="chip">
+                      <a href="{% url 'search_category' %}?category={{category.name}}">{{category.name}}</a>
+                    </div>
+                    {% endfor %}
+                  </div>
+
                   <a href="{{entrada.get_absolute_url}}" class="article-link"><h5>{{entrada.title}}</h5></a>
                 </div>
               </div>
@@ -144,8 +154,8 @@
           <h3 class="section-title">Categorias Populares <i class="fa fa-tags" aria-hidden="true"></i></h3>
 
           {% for categoria in category_populares %}
-            <div class="chip z-depth-1" name="category">
-              <a href="/posts/search_category/?category={{categoria.name}}">{{categoria.name}}</a>
+            <div class="chip z-depth-1"> {# BUG los 'name' son para los inputs, y solo en formularios #}
+              <a href="{% url 'search_category' %}?category={{categoria.name}}">{{categoria.name}}</a>
             </div>
           {% endfor %}
 

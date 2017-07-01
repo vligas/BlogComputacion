@@ -13,34 +13,33 @@ import operator
 
 #----------| Index de la pagina |----------
 def index(request):
-    category = Category.objects.all()
-    category_show = [
-        category[0],
-        category[1],
-        category[2],
-        category[3],
-        category[4],
-        category[5],
-        category[6],
-    ]
-    posts = Post.objects.all()
-    lon = len(posts)
-    posts_order = sorted(posts, key=operator.attrgetter('cont_vist'))
-    posts_populares = [
-        posts[lon-1],
-        posts[lon-2],
-        posts[lon-3],
-    ]
-    posts_nuevos = [posts[lon-1], posts[lon-2], posts[lon-3], posts[lon-4]]
+    category = Category.objects.all()[:5] # asi obtengo maximo 5
+    category_show = category
+
+    # BUG como lo tenias no me funcionaba si no tenia categorias, intentaba
+    # acceder a la posicion '5' de una lista vacia
+
+    posts_populares = Post.objects.order_by('-cont_vist')[:3]
+    # lon = len(posts)
+    # posts_order = sorted(posts, key=operator.attrgetter('cont_vist'))
+    # posts_populares = [
+    #     # posts[lon-1],
+    #     # posts[lon-2],           # BUG no me funcionaba si no tengo 3 posts
+    #     # posts[lon-3],
+    # ]
+
+    # posts_nuevos = [posts[lon-1], posts[lon-2], posts[lon-3], posts[lon-4]]
+    # BUG lo mismo que en las anteriores
+
+    posts_nuevos = Post.objects.order_by('-created_at')[:4]
 
     category_populares = []
 
-    for x in posts_populares:
+    for x in posts_populares:   # No entendi esta parte
         for y in x.category.all():
             if not y in category_populares:
                 category_populares.append(y)
 
-    print(category_populares)
     context = {
         'category':category,
         'category_show':category_show,
@@ -58,7 +57,8 @@ def search(request):
 
 def search_category(request):
     temp = request.GET.get('category','')
-    if temp == 'all':
+    if temp == 'all' or None: # para que redireccione en caso de que la persona
+    # quiera acceder a la url sin pasar una categoria
         return redirect('showAll')
     else:
         posts = Post.objects.filter(category__name=temp)

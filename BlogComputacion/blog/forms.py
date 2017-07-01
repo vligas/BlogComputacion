@@ -4,6 +4,8 @@ from django import forms
 
 class FormPost(forms.ModelForm):
 
+    images = forms.ImageField(widget=forms.ClearableFileInput(attrs={'multiple': True}), required=False)
+
     class Meta:
         model = Post
         fields = ['title', 'text', 'cover', 'category']
