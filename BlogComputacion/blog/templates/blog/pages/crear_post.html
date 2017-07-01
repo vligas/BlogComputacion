@@ -38,6 +38,7 @@
         </div>
         <br>
         <p><b>IMPORTANTE.</b> la vista previa mostrada en este formulario es un aproximado a como se vera en el blog, pero puede variar, siempre verificar la vista en detalle</p>
+        <p><b>IMPORTANTE.</b> para añadir imagenes usar <code>&lt;img src="path_de_imagen_adjunta" class="image-responsive"&gt;</code></p>
         <br>
         <div id="editormd">
           {% render_field form.text style='display:none;' %}
@@ -56,6 +57,17 @@
           </div>
         </div>
         <div class="input-field">
+          <div class="file-field input-field">
+            <div class="btn btn-small blue">
+              <span>Imagenes adjuntas</span>
+              {% render_field form.images %}
+            </div>
+            <div class="file-path-wrapper">
+              <input id="aux" class="file-path validate {% if form.images.errors %}invalid{% endif %}" type="text">
+            </div>
+          </div>
+        </div>
+        <div class="input-field">
           {% render_field form.category %}
         </div>
         {% endwith %}
@@ -65,6 +77,19 @@
 
 
       </form>
+      <br><br><br>
+      <div>
+        <h5>Lista de imagenes adjuntas</h5>
+        <ul>
+          {% for image in instance.images.all %}
+          <li>
+            <a href="{{image.img.url}}" target="_blank">{{image.img.url}}</a>
+            <a class="red-text"href="{% url 'delete_image' image.id %}"><i class="fa fa-trash-o fa-lg"></i></a>
+
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
 
   </div>

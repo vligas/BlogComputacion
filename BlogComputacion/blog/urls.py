@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^posts/(?P<id>[0-9]+)/$', views.showOne, name='showOne'),  # Muestra un post en especifico con todos sus detalles
     url(r'^mis_post/$', views.showAllMyPost, name='showAllMyPost'),
     url(r'^posts/(?P<id>[0-9]+)/edit', views.updatePost, name = 'update'),
+    url(r'^image/(?P<id>[0-9]+)/delete', views.deletePostImage, name = 'delete_image'),
     url(r'^create_post/$', views.createPost, name="create"), # en esta url cuando se realiza una peticion GET se muestra el formulario, y cuando es una peticion POST se procesa y se redirecciona en caso de ser correcto
     url(r'^posts/(?P<id>[0-9]+)/borrar', views.deletePost, name ='deletePost'),
     url(r'^enviarSugerencia/', views.enviarSugerencia, name = 'enviarSugerencia'),

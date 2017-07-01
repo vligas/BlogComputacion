@@ -2,14 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, Http404
 from django.core.mail import send_mail
 from .forms import FormPost, CommentForm
-from .models import Post, Comment, Category
+from .models import Post, Comment, Category, ImgOfPost
 from django.views.generic import ListView
 from django.contrib.auth.decorators import permission_required, login_required
 from django.db.models import Q #necesario para la busqueda
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import random
 import operator
-
+import os
 
 #----------| Index de la pagina |----------
 def index(request):
@@ -92,6 +92,13 @@ def createPost(request):
 
             post = form.save(commit=False) # el commit False hace que se cree la instancia pero que no se salve en la base de datos
             post.author = request.user
+            images = request.FILES.getlist('images')
+
+            for image in images:
+                aux = ImgOfPost(img=image)
+                aux.save()
+                post.images.add(aux)
+
             post.save()
             return redirect('showOne', id=post.id)
 
@@ -170,8 +177,16 @@ def updatePost(request, id):
 
         if( request.method == "POST"): # si es POST quiere decir que se esta actualizando el post
             if form.is_valid():
+                instance = form.save(commit=False)
+                images = request.FILES.getlist('images')
 
-                instance = form.save()
+                for image in images:
+                    aux = ImgOfPost(img=image)
+                    aux.save()
+                    instance.images.add(aux)
+
+                instance.save()
+
                 return redirect(instance) # esto funciona ya que si a redirect() se le pasa un objeto este llama a su metodo get_absolute_url
 
         # en caso de ser GET significa que el usuario esta solicitando el formulario para actualizar el post
@@ -193,8 +208,18 @@ def updatePost(request, id):
 @permission_required('blog.add_post', raise_exception=True)
 def deletePost(request, id):
     post = get_object_or_404(Post, pk=id)
-    post.delete()
+    if post.author == request.user:
+        post.delete()
     return redirect('showAllMyPost')
+
+def deletePostImage(request, id):
+    image = get_object_or_404(ImgOfPost, pk=id)
+    if image.post.author == request.user:
+        os.remove(image.img.path)
+        image.delete()
+
+    return redirect('update', id=image.post_id)
+
 
 
 # ---------| VIEW PARA ENVIAR SUGERENCIAS |---------
